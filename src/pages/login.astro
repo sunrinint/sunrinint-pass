@@ -7,7 +7,12 @@ import { Image } from "astro:assets";
 <Layout title="모바일 학생증 서비스">
   <div class="wrapper">
     <div class="logo">
-      <Image src={Logo} alt="logo" />
+      <Image
+        src="/logo.svg"
+        alt="logo"
+        width={Logo.width}
+        height={Logo.height}
+      />
       <div class="line">
         SunrinINT
         <svg

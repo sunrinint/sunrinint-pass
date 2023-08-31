@@ -1,5 +1,124 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+import Barcode from "../components/Barcode.tsx";
 ---
 
-<Layout title="모바일 학생증 서비스" />
+<Layout title="모바일 학생증 서비스">
+  <div class="wrapper">
+    <Image class="logo" src="/logo.svg" alt="landing" width={64} height={24} />
+    <div class="pass">
+      <div class="info">
+        <Image
+          src="/images/pass_background.svg"
+          alt="pass"
+          width={200}
+          height={242}
+        />
+
+        <p>선린인터넷고등학교 모바일 학생증</p>
+        <div class="detail">
+          <h1>백시현</h1>
+          <h2>콘텐츠디자인과</h2>
+          <p>22sunrin000@sunrint.hs.kr</p>
+        </div>
+
+        <p>2022.03.02 ~ 2025.02.28</p>
+      </div>
+      <div class="barcode">
+        <Barcode />
+        <p>S2220208</p>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style lang="scss" scoped>
+  .wrapper {
+    width: 100%;
+    height: 100dvh;
+
+    background-color: #f0f2f5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 24px;
+    }
+  }
+
+  .pass {
+    width: 80%;
+    max-width: 303px;
+
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 16px 24px 0px rgba(82, 99, 133, 0.16);
+    border-radius: 4px;
+
+    .info {
+      background: #1c232e;
+      padding: 16px 20px 20px 20px;
+
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      position: relative;
+
+      overflow: hidden;
+
+      img {
+        position: absolute;
+        right: 0;
+      }
+
+      p {
+        font-weight: 400;
+        line-height: 150%;
+        color: #9babc2;
+      }
+
+      h1 {
+        color: #fff;
+        font-size: 33px;
+        font-weight: 600;
+        line-height: 150%;
+      }
+
+      h2 {
+        color: #d7e4f5;
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 150%;
+      }
+
+      .detail {
+        display: flex;
+        gap: 4px;
+        flex-direction: column;
+      }
+    }
+
+    .barcode {
+      overflow: hidden;
+      padding: 24px 40px;
+
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      p {
+        color: #1c232e;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 150%;
+        text-align: center;
+      }
+    }
+  }
+</style>

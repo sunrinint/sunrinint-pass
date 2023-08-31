@@ -2,6 +2,7 @@
   "name": "sunrinint-pass",
   "type": "module",
   "version": "0.0.1",
+  "license": "MIT",
   "scripts": {
     "dev": "astro dev --port 8080",
     "start": "astro dev",
