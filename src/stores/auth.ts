@@ -1,3 +1,3 @@
 import { atom } from "nanostores";
 
-export const accessToken = atom<string | undefined>();
+export const accessToken = atom<string>("hello");
