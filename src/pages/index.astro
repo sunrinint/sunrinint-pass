@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Info from "../components/user/Info.svelte";
-import Barcode from "../components/Barcode.tsx";
+import Barcode from "../components/Barcode.svelte";
 
 import Logout from "../assets/logout.svg";
 import Background from "../assets/images/pass_background.svg";
@@ -29,7 +29,8 @@ import Header from "../components/Header.astro";
 </Layout>
 
 <script>
-  import { userInfo, isEmpty, resetUserInfo } from "../stores/info";
+  import User from "../api/User";
+  import { isEmpty, resetUserInfo } from "../stores/info";
 
   const logout = document.querySelector(".logout");
 
@@ -38,9 +39,13 @@ import Header from "../components/Header.astro";
     location.href = "/login";
   });
 
-  // if (isEmpty) {
-  //   location.href = "/login";
-  // }
+  if (!isEmpty) {
+    User.GetMe().then((res) => {
+      console.log(res);
+    });
+
+    // location.href = "/login";
+  }
 </script>
 
 <style lang="scss" scoped>

@@ -1,12 +1,9 @@
 import axios, { AxiosError } from "axios";
-import * as dotenv from "dotenv";
 import { accessToken } from "../stores/auth";
-
-dotenv.config();
 
 export const apiInstance = () =>
   axios.create({
-    baseURL: process.env.API_URL,
+    baseURL: import.meta.env.PUBLIC_API_URL,
     withCredentials: true,
     headers: {
       "Content-Type": "application/json",
@@ -15,7 +12,7 @@ export const apiInstance = () =>
 
 export const authInstance = () => {
   const instance = axios.create({
-    baseURL: process.env.API_URL,
+    baseURL: import.meta.env.PUBLIC_API_URL,
     withCredentials: true,
     headers: {
       "Content-Type": "application/json",
@@ -38,6 +35,8 @@ export const authInstance = () => {
     return config;
   });
 
+  console.log(accessToken.get());
+
   instance.interceptors.response.use(
     (config) => config,
     async (error: AxiosError) => {
@@ -57,7 +56,7 @@ export const authInstance = () => {
           .catch((err: AxiosError) => {
             if (err.response?.status === 401) {
               accessToken.set("");
-              window.location.href = "/login";
+              // window.location.href = "/login";
             }
           });
       }

@@ -20,7 +20,7 @@ import Modal, { MODAL_ID } from "../components/auth/Modal.astro";
     </div>
     <div class="buttons">
       <div class="login_wrapper">
-        <button class="login">
+        <button id="login" class="login">
           <Image src={Google} alt="google" />
           <p>학교 구글 계정으로 로그인</p>
         </button>
@@ -32,6 +32,14 @@ import Modal, { MODAL_ID } from "../components/auth/Modal.astro";
   </div>
   <Modal />
 </Layout>
+
+<script>
+  const login = document.querySelector("#login");
+
+  login?.addEventListener("click", () => {
+    window.location.href = `${import.meta.env.PUBLIC_API_URL}/auth/google`;
+  });
+</script>
 
 <style lang="scss">
   .wrapper {
