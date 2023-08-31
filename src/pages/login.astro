@@ -4,6 +4,9 @@ import { Image } from "astro:assets";
 
 import Logo from "../assets/logo.svg";
 import Sunrin from "../assets/sunrin.svg";
+import Google from "../assets/images/google.svg";
+
+import Modal, { MODAL_ID } from "../components/auth/Modal.astro";
 ---
 
 <Layout title="모바일 학생증 서비스">
@@ -16,10 +19,16 @@ import Sunrin from "../assets/sunrin.svg";
       </div>
     </div>
     <div class="buttons">
-      <button class="login">학교 구글 계정으로 로그인</button>
-      <button class="help">로그인에 문제가 있나요?</button>
+      <button class="login">
+        <Image src={Google} alt="google" />
+        <p>학교 구글 계정으로 로그인</p>
+      </button>
+      <button class="help" onclick={`showModal('${MODAL_ID}')`}
+        >로그인에 문제가 있나요?</button
+      >
     </div>
   </div>
+  <Modal />
 </Layout>
 
 <style lang="scss">
@@ -70,11 +79,17 @@ import Sunrin from "../assets/sunrin.svg";
       align-self: stretch;
 
       border-radius: 4px;
-      background: #222b38;
+      background: var(--Grayscale-40);
 
-      color: #fff;
-      font-size: 17px;
-      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      p {
+        color: var(--Grayscale-10);
+        font-size: 17px;
+        font-weight: 600;
+      }
     }
 
     .help {
@@ -83,9 +98,9 @@ import Sunrin from "../assets/sunrin.svg";
       gap: 4px;
 
       border-radius: 30px;
-      background: #ebeff5;
+      background: var(--Grayscale-20);
 
-      color: #4f5d70;
+      color: var(--Grayscale-30);
       text-align: center;
       font-size: 15px;
       font-weight: 400;
