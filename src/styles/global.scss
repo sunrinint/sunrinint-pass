@@ -1,7 +1,14 @@
 @import url("https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css");
 
 :root {
-  
+  --Grayscale-10: #ffffff;
+  --Grayscale-20: #F0F2F5;
+  --Grayscale-30: #4F5D70;
+  --Grayscale-40: #222B38;
+  --Grayscale-50: #1C232E;
+  --Black-25: rgb(0,0,0,0.5);
+  --Highlight: #3671C2;
+  --blue-ish: #D7E4F5;
 }
 
 * {
@@ -27,6 +34,6 @@ button, input {
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+  color: var(--Highlight);
+  text-decoration: underline;
 }
