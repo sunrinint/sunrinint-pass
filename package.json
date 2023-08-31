@@ -15,9 +15,16 @@
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "astro": "^3.0.3",
+    "axios": "^1.5.0",
+    "dotenv": "^16.3.1",
+    "nanostores": "^0.9.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "sass": "^1.66.1",
     "svelte": "^4.0.0"
+  },
+  "devDependencies": {
+    "@vite-pwa/astro": "^0.1.1",
+    "workbox-build": "^7.0.0"
   }
 }
