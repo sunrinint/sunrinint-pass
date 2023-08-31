@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 
 import Logo from "../assets/logo.svg";
-import Sunrin from "../assets/sunrin.svg";
+import Sunrin from "../assets/sunrin_w_title.svg";
 import Google from "../assets/images/google.svg";
 
 import Modal, { MODAL_ID } from "../components/auth/Modal.astro";
@@ -19,10 +19,12 @@ import Modal, { MODAL_ID } from "../components/auth/Modal.astro";
       </div>
     </div>
     <div class="buttons">
-      <button class="login">
-        <Image src={Google} alt="google" />
-        <p>학교 구글 계정으로 로그인</p>
-      </button>
+      <div class="login_wrapper">
+        <button class="login">
+          <Image src={Google} alt="google" />
+          <p>학교 구글 계정으로 로그인</p>
+        </button>
+      </div>
       <button class="help" onclick={`showModal('${MODAL_ID}')`}
         >로그인에 문제가 있나요?</button
       >
@@ -56,11 +58,15 @@ import Modal, { MODAL_ID } from "../components/auth/Modal.astro";
     justify-content: center;
     align-items: center;
     gap: 8px;
+
+    p {
+      color: var(--Grayscale-30);
+    }
   }
 
   .buttons {
+    width: 100%;
     display: flex;
-    width: 335px;
     flex-direction: column;
     align-items: center;
     gap: 16px;
@@ -75,8 +81,10 @@ import Modal, { MODAL_ID } from "../components/auth/Modal.astro";
     }
 
     .login {
+      width: 100%;
       padding: 16px 0px;
       align-self: stretch;
+      max-width: 480px;
 
       border-radius: 4px;
       background: var(--Grayscale-40);
@@ -84,11 +92,17 @@ import Modal, { MODAL_ID } from "../components/auth/Modal.astro";
       display: flex;
       align-items: center;
       gap: 8px;
+      margin: 0 auto;
 
       p {
         color: var(--Grayscale-10);
         font-size: 17px;
         font-weight: 600;
+      }
+
+      &_wrapper {
+        width: 100%;
+        padding: 0 20px;
       }
     }
 

@@ -77,6 +77,15 @@ import Header from "../components/Header.astro";
     }
   }
 
+  @keyframes slideIn {
+    from {
+      transform: translateY(12px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
   .pass {
     width: 100%;
     min-width: 244px;
@@ -88,6 +97,8 @@ import Header from "../components/Header.astro";
 
     border-radius: 16px;
     margin: 0 auto;
+
+    animation: slideIn 0.5s ease-in-out;
 
     &_wrapper {
       width: 100%;

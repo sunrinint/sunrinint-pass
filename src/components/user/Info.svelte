@@ -50,7 +50,7 @@
     p {
       font-weight: 400;
       line-height: 150%;
-      color: #9babc2;
+      color: var(--Blue-ish);
       font-size: 15px;
     }
 
