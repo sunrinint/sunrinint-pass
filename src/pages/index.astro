@@ -3,13 +3,14 @@ import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Barcode from "../components/Barcode.tsx";
 
-import Logo from "../assets/logo.svg";
+import Logout from "../assets/logout.svg";
 import Background from "../assets/images/pass_background.svg";
+import Header from "../components/Header.astro";
 ---
 
 <Layout title="모바일 학생증 서비스">
   <div class="wrapper">
-    <Image class="logo" src={Logo} alt="landing" width={64} height={24} />
+    <Header />
     <div class="pass">
       <div class="info">
         <Image src={Background} alt="pass" width={200} height={242} />
@@ -30,7 +31,7 @@ import Background from "../assets/images/pass_background.svg";
     </div>
     <button class="logout">
       <p>로그아웃</p>
-      <Image src="/logout.svg" alt="logout" width={16} height={16} />
+      <Image src={Logout} alt="logout" width={16} height={16} />
     </button>
   </div>
 </Layout>
@@ -45,13 +46,6 @@ import Background from "../assets/images/pass_background.svg";
     display: flex;
     align-items: center;
     justify-content: center;
-
-    .logo {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      top: 24px;
-    }
 
     .logout {
       position: absolute;

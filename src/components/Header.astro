@@ -1,0 +1,24 @@
+---
+import { Image } from "astro:assets";
+
+import Logo from "../assets/logo.svg";
+import Info from "../assets/info.svg";
+---
+
+<div class="logo">
+  <Image src={Logo} alt="landing" width={64} height={24} />
+  <Image src={Info} alt="info" width={16} height={16} />
+</div>
+<style>
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 24px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 8px;
+  }
+</style>

@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 
 import Logo from "../assets/logo.svg";
+import Sunrin from "../assets/sunrin.svg";
 ---
 
 <Layout title="모바일 학생증 서비스">
@@ -10,7 +11,7 @@ import Logo from "../assets/logo.svg";
     <div class="logo">
       <Image src={Logo} alt="logo" width={170} height={64} />
       <div class="description">
-        <Image src="/sunrin.svg" alt="sunrin" width={13} height={16} />
+        <Image src={Sunrin} alt="sunrin" width={13} height={16} />
         <p>선린인터넷고등학교 모바일 학생증</p>
       </div>
     </div>

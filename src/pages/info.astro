@@ -1,0 +1,75 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import Header from "../components/Header.astro";
+import Content from "../components/Info.astro";
+
+const Contents = [
+  {
+    title: "SunrinINT가 무엇인가요?",
+    content:
+      "SunrinINT는 선린인터넷고등학교 학생들을 위한 서비스를 개발하는 팀입니다.",
+  },
+  {
+    title: "누가 운영하는건가요?",
+    content:
+      "현재 정보보호과 재학생 2명과 콘텐츠디자인과 1명으로 구성되어 있으며, 원활한 관리를 위해 학생회와 제휴 중입니다.",
+  },
+  {
+    title: "이슈를 제보하고 싶어요",
+    content:
+      '불편함이 있으시다면 <a href="mailto:asdf@asdf.com">asdf@asdf.com</a>으로 메일을 보내주시거나 인스타그램 <a href="https://www.instagram.com/asdf/">@asdf</a>에게 문의해주시면 됩니다.',
+  },
+  {
+    title: "프로젝트에 기여하고 싶어요",
+    content:
+      'SunrinINT는 일부 오픈소스로 운영되고 있습니다. <a href="https://github.com/sunrin-int/sunrinint-pass">GitHub</a>에서 PR해주시면 검토 후 반영하도록 하겠습니다.',
+  },
+];
+---
+
+<Layout title="모바일 학생증 서비스">
+  <div class="wrapper">
+    <Header />
+    <div class="content">
+      {
+        Contents.map((content) => (
+          <Content title={content.title} content={content.content} />
+        ))
+      }
+    </div>
+    <div class="footer">© 2023 SunrinINT.</div>
+  </div>
+
+  <style lang="scss" scoped>
+    .wrapper {
+      width: 100%;
+      height: 100dvh;
+
+      background-color: #f0f2f5;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .content {
+      display: flex;
+      padding: 8px 20px 32px 20px;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer {
+      color: #4f5d70;
+      text-align: center;
+      font-family: SUIT;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%; /* 22.5px */
+    }
+  </style>
+</Layout>
