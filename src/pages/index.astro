@@ -1,0 +1,100 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Logo from "../../public/logo.svg";
+import { Image } from "astro:assets";
+---
+
+<Layout title="모바일 학생증 서비스">
+  <div class="wrapper">
+    <div class="frame4">
+      <Image src={Logo} alt="logo" />
+      <div class="frame3">
+        SunrinINT
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="71"
+          height="2"
+          viewBox="0 0 71 2"
+          fill="none"
+        >
+          <path d="M0 1.125H70.9998" stroke="#CAD1DB"></path>
+        </svg>
+         모바일 학생증 서비스
+      </div>
+    </div>
+    <div class="frame1">
+      <div class="frame2">학교 구글 계정으로 로그인</div>
+      <div class="frame5">로그인에 문제가 있나요?</div>
+    </div>
+  </div>
+</Layout>
+
+<style lang="scss">
+  .wrapper {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .frame4 {
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    flex-shrink: 0;
+  }
+
+  .frame3 {
+    display: flex;
+    padding: 0px 24px;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .frame1 {
+    display: flex;
+    width: 335px;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .frame2 {
+    display: flex;
+    padding: 16px 0px;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+
+    border-radius: 4px;
+    background: #222b38;
+
+    color: #fff;
+    font-family: SUIT;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  .frame5 {
+    display: flex;
+    padding: 12px 20px;
+    align-items: center;
+    gap: 4px;
+
+    border-radius: 30px;
+    background: #ebeff5;
+
+    color: #4f5d70;
+    text-align: center;
+    font-family: SUIT;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+</style>
