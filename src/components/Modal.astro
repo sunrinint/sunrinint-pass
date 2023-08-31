@@ -1,9 +1,44 @@
+---
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
 <div class="wrapper">
-  <div class="container">
+  <div
+    class="container"
+    id={`modal-${id}`}
+    onclick="
+    event.stopPropagation();
+    "
+  >
     <slot />
   </div>
 </div>
+<script is:inline>
+function showModal(modalId) {
+  const wrapper = document.getElementById(`modal-${modalId}`)?.parentElement;
+  if (!wrapper) return;
+  wrapper.style.display = "flex";
+}
+function closeModal(modalId) {
+  const wrapper = document.getElementById(`modal-${modalId}`)?.parentElement;
+  if (!wrapper) return;
+  wrapper.style.display = "none";
+}
+</script>
+<script define:vars={{ modalId: id }}>
+const modal = document.getElementById(`modal-${modalId}`);
+const wrapper = modal.parentElement;
 
+wrapper.style.display = "none";
+
+wrapper.addEventListener("click", () => {
+  wrapper.style.display = "none";
+});
+</script>
 <style>
   .wrapper {
     position: fixed;
@@ -27,6 +62,6 @@
 
     padding: 16px;
     border-radius: 8px;
-    background-color: #FFF;
+    background-color: #fff;
   }
 </style>
