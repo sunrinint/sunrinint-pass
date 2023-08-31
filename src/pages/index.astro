@@ -24,10 +24,14 @@ import Background from "../assets/images/pass_background.svg";
         <p>2022.03.02 ~ 2025.02.28</p>
       </div>
       <div class="barcode">
-        <Barcode />
+        <Barcode client:only="react" />
         <p>S2220208</p>
       </div>
     </div>
+    <button class="logout">
+      <p>로그아웃</p>
+      <Image src="/logout.svg" alt="logout" width={16} height={16} />
+    </button>
   </div>
 </Layout>
 
@@ -48,6 +52,28 @@ import Background from "../assets/images/pass_background.svg";
       transform: translateX(-50%);
       top: 24px;
     }
+
+    .logout {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 16px;
+
+      padding: 12px 20px;
+      gap: 4px;
+      border-radius: 30px;
+
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background-color: #ffffff;
+
+      p {
+        color: #4f5d70;
+        font-size: 15px;
+        font-weight: 400;
+      }
+    }
   }
 
   .pass {
@@ -57,18 +83,18 @@ import Background from "../assets/images/pass_background.svg";
     display: flex;
     flex-direction: column;
     box-shadow: 0px 16px 24px 0px rgba(82, 99, 133, 0.16);
-    border-radius: 4px;
+
+    border-radius: 16px;
 
     .info {
       background: #1c232e;
+      border-radius: 12px 12px 0 0;
       padding: 16px 20px 20px 20px;
 
       display: flex;
       flex-direction: column;
       gap: 48px;
       position: relative;
-
-      overflow: hidden;
 
       img {
         position: absolute;
@@ -103,12 +129,13 @@ import Background from "../assets/images/pass_background.svg";
     }
 
     .barcode {
-      overflow: hidden;
+      border-radius: 0 0 12px 12px;
       padding: 24px 40px;
 
       display: flex;
       flex-direction: column;
       gap: 8px;
+      background-color: white;
 
       p {
         color: #1c232e;
