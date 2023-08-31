@@ -52,6 +52,7 @@
       line-height: 150%;
       color: var(--Blue-ish);
       font-size: 15px;
+      z-index: 1;
     }
 
     h1 {
@@ -59,6 +60,7 @@
       font-size: 33px;
       font-weight: 600;
       line-height: 150%;
+      z-index: 1;
     }
 
     h2 {
@@ -66,6 +68,7 @@
       font-size: 17px;
       font-weight: 600;
       line-height: 150%;
+      z-index: 1;
     }
 
     .detail {
