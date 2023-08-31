@@ -1,0 +1,43 @@
+---
+interface Props {
+  title: string;
+  content: string;
+}
+
+const { title, content } = Astro.props;
+---
+
+<div class="wrapper">
+  <h1>{title}</h1>
+  <p>
+    <Fragment set:html={content} />
+  </p>
+</div>
+
+<style lang="scss">
+  .wrapper {
+    width: 100%;
+
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 12px;
+    border-radius: 8px;
+    background: #fff;
+
+    h1 {
+      color: #1c232e;
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    p {
+      color: #4f5d70;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 150%; /* 22.5px */
+    }
+  }
+</style>

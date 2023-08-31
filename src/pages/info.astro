@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 
 import Header from "../components/Header.astro";
-import Content from "../components/Info.astro";
+import Content from "../components/info/Content.astro";
 
 const Contents = [
   {
@@ -18,12 +18,12 @@ const Contents = [
   {
     title: "이슈를 제보하고 싶어요",
     content:
-      '불편함이 있으시다면 <a href="mailto:asdf@asdf.com">asdf@asdf.com</a>으로 메일을 보내주시거나 인스타그램 <a href="https://www.instagram.com/asdf/">@asdf</a>에게 문의해주시면 됩니다.',
+      '불편함이 있으시다면 <a target="_blank" href="mailto:asdf@asdf.com">asdf@asdf.com</a>으로 메일을 보내주시거나 인스타그램 <a target="_blank" href="https://www.instagram.com/asdf/">@asdf</a>에게 문의해주시면 됩니다.',
   },
   {
     title: "프로젝트에 기여하고 싶어요",
     content:
-      'SunrinINT는 일부 오픈소스로 운영되고 있습니다. <a href="https://github.com/sunrin-int/sunrinint-pass">GitHub</a>에서 PR해주시면 검토 후 반영하도록 하겠습니다.',
+      'SunrinINT는 일부 오픈소스로 운영되고 있습니다. <a target="_blank" href="https://github.com/sunrin-int/sunrinint-pass">GitHub</a>에서 PR해주시면 검토 후 반영하도록 하겠습니다.',
   },
 ];
 ---
@@ -38,7 +38,7 @@ const Contents = [
         ))
       }
     </div>
-    <div class="footer">© 2023 SunrinINT.</div>
+    <div class="footer">&copy; 2023 SunrinINT.</div>
   </div>
 
   <style lang="scss" scoped>
@@ -63,7 +63,7 @@ const Contents = [
     }
 
     .footer {
-      color: #4f5d70;
+      color: var(--Grayscale-30);
       text-align: center;
       font-family: SUIT;
       font-size: 15px;
