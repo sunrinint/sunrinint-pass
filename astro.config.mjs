@@ -10,7 +10,7 @@ export default defineConfig({
     svelte(),
     AstroPWA({
       devOptions: {
-        enabled: true,
+        // enabled: true,
         /* other options */
       },
       includeAssets: ["favicon.svg", "logo.svg"],
