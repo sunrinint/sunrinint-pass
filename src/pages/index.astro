@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+import Info from "../components/user/Info.svelte";
 import Barcode from "../components/Barcode.tsx";
 
 import Logout from "../assets/logout.svg";
@@ -11,30 +12,36 @@ import Header from "../components/Header.astro";
 <Layout title="모바일 학생증 서비스">
   <div class="wrapper">
     <Header />
-    <div class="pass">
-      <div class="info">
-        <Image src={Background} alt="pass" width={200} height={242} />
-
-        <p>선린인터넷고등학교 모바일 학생증</p>
-        <div class="detail">
-          <h1>백시현</h1>
-          <h2>콘텐츠디자인과</h2>
-          <p>22sunrin000@sunrint.hs.kr</p>
+    <div class="pass_wrapper">
+      <div class="pass">
+        <Info client:load />
+        <div class="barcode">
+          <Barcode client:idle />
+          <p>S2220208</p>
         </div>
-
-        <p>2022.03.02 ~ 2025.02.28</p>
       </div>
-      <div class="barcode">
-        <Barcode client:only="react" />
-        <p>S2220208</p>
-      </div>
+      <button class="logout">
+        <p>로그아웃</p>
+        <Image src={Logout} alt="logout" width={16} height={16} />
+      </button>
     </div>
-    <button class="logout">
-      <p>로그아웃</p>
-      <Image src={Logout} alt="logout" width={16} height={16} />
-    </button>
   </div>
 </Layout>
+
+<script>
+  import { userInfo, isEmpty, resetUserInfo } from "../stores/info";
+
+  const logout = document.querySelector(".logout");
+
+  logout?.addEventListener("click", () => {
+    resetUserInfo();
+    location.href = "/login";
+  });
+
+  // if (isEmpty) {
+  //   location.href = "/login";
+  // }
+</script>
 
 <style lang="scss" scoped>
   .wrapper {
@@ -71,63 +78,29 @@ import Header from "../components/Header.astro";
   }
 
   .pass {
-    width: 80%;
-    max-width: 303px;
+    width: 100%;
+    min-width: 244px;
+    max-width: 420px;
 
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 16px 24px 0px rgba(82, 99, 133, 0.16);
+    box-shadow: 0px 16px 20px 0px rgba(82, 99, 133, 0.12);
 
     border-radius: 16px;
+    margin: 0 auto;
 
-    .info {
-      background: #1c232e;
-      border-radius: 12px 12px 0 0;
-      padding: 16px 20px 20px 20px;
-
-      display: flex;
-      flex-direction: column;
-      gap: 48px;
-      position: relative;
-
-      img {
-        position: absolute;
-        right: 0;
-      }
-
-      p {
-        font-weight: 400;
-        line-height: 150%;
-        color: #9babc2;
-      }
-
-      h1 {
-        color: #fff;
-        font-size: 33px;
-        font-weight: 600;
-        line-height: 150%;
-      }
-
-      h2 {
-        color: #d7e4f5;
-        font-size: 17px;
-        font-weight: 600;
-        line-height: 150%;
-      }
-
-      .detail {
-        display: flex;
-        gap: 4px;
-        flex-direction: column;
-      }
+    &_wrapper {
+      width: 100%;
+      padding: 24px;
     }
 
     .barcode {
       border-radius: 0 0 12px 12px;
-      padding: 24px 40px;
+      padding: 24px 32px;
 
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 8px;
       background-color: white;
 
@@ -136,7 +109,6 @@ import Header from "../components/Header.astro";
         font-size: 15px;
         font-weight: 400;
         line-height: 150%;
-        text-align: center;
       }
     }
   }
