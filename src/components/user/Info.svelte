@@ -10,12 +10,12 @@
   {#if !$isEmpty}
     <p>선린인터넷고등학교 모바일 학생증</p>
     <div class="detail">
-      <h1>{$userInfo.name}&nbsp;</h1>
-      <h2>{$userInfo.division}&nbsp;</h2>
-      <p>{$userInfo.email}&nbsp;</p>
+      <h1>{$userInfo.name}</h1>
+      <h2>{$userInfo.division}</h2>
+      <p>{$userInfo.email}</p>
     </div>
 
-    <p>{$userInfo.date}&nbsp;</p>
+    <p>{$userInfo.date}</p>
   {:else}
     <div class="loading">
       <Loading />
