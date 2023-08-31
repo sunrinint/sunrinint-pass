@@ -1,0 +1,107 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Logo from "../../public/logo.svg";
+import { Image } from "astro:assets";
+---
+
+<Layout title="모바일 학생증 서비스">
+  <div class="wrapper">
+    <div class="logo">
+      <Image src={Logo} alt="logo" />
+      <div class="line">
+        SunrinINT
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="71"
+          height="2"
+          viewBox="0 0 71 2"
+          fill="none"
+        >
+          <path d="M0 1.125H70.9998" stroke="#CAD1DB"></path>
+        </svg>
+         모바일 학생증 서비스
+      </div>
+    </div>
+    <div class="buttons">
+      <button class="login">학교 구글 계정으로 로그인</button>
+      <button class="help">로그인에 문제가 있나요?</button>
+    </div>
+  </div>
+</Layout>
+
+<style lang="scss">
+  .wrapper {
+    width: 100vw;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo {
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    font-weight: 600;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 200px;
+    }
+  }
+
+  .line {
+    display: flex;
+    padding: 0px 24px;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .buttons {
+    display: flex;
+    width: 335px;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    position: absolute;
+    bottom: 16px;
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login {
+      padding: 16px 0px;
+      align-self: stretch;
+
+      border-radius: 4px;
+      background: #222b38;
+
+      color: #fff;
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .help {
+      display: flex;
+      padding: 12px 20px;
+      gap: 4px;
+
+      border-radius: 30px;
+      background: #ebeff5;
+
+      color: #4f5d70;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 400;
+    }
+  }
+</style>

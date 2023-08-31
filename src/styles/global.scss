@@ -1,36 +1,28 @@
-:root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(45deg,
-            rgb(var(--accent)),
-            rgb(var(--accent-light)) 30%,
-            white 60%);
+@import url("https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: 'SUIT', sans-serif;
 }
 
-html {
-    font-family: system-ui, sans-serif;
-    // background: #13151a;
-    background-size: 224px;
+input {
+  min-width: 0;
 }
 
-code {
-    font-family:
-        Menlo,
-        Monaco,
-        Lucida Console,
-        Liberation Mono,
-        DejaVu Sans Mono,
-        Bitstream Vera Sans Mono,
-        Courier New,
-        monospace;
+button {
+  cursor: pointer;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
+button, input {
+  border: none;
+  outline: none;
+  background: none;
 }
 
-body {
-    margin: 0;
+a {
+  text-decoration: none;
+  color: inherit;
 }
