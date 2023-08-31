@@ -1,30 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Logo from "../assets/logo.svg";
 import { Image } from "astro:assets";
 ---
 
 <Layout title="모바일 학생증 서비스">
   <div class="wrapper">
     <div class="logo">
-      <Image
-        src="/logo.svg"
-        alt="logo"
-        width={Logo.width}
-        height={Logo.height}
-      />
-      <div class="line">
-        SunrinINT
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="71"
-          height="2"
-          viewBox="0 0 71 2"
-          fill="none"
-        >
-          <path d="M0 1.125H70.9998" stroke="#CAD1DB"></path>
-        </svg>
-         모바일 학생증 서비스
+      <Image src="/logo.svg" alt="logo" width={170} height={64} />
+      <div class="description">
+        <Image src="/sunrin.svg" alt="sunrin" width={13} height={16} />
+        <p>선린인터넷고등학교 모바일 학생증</p>
       </div>
     </div>
     <div class="buttons">
@@ -49,22 +34,16 @@ import { Image } from "astro:assets";
     width: 100vw;
     flex-direction: column;
     align-items: center;
-    gap: 32px;
+    gap: 24px;
     font-weight: 600;
     flex-shrink: 0;
-
-    img {
-      width: 100%;
-      height: auto;
-      max-height: 200px;
-    }
   }
 
-  .line {
+  .description {
     display: flex;
-    padding: 0px 24px;
+    justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 8px;
   }
 
   .buttons {
