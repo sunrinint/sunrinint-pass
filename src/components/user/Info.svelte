@@ -19,7 +19,7 @@
 <div class="info">
   <img src={Background.src} alt="pass" width={200} height={242} />
 
-  {#if $isEmpty}
+  {#if !$isEmpty}
     <p>선린인터넷고등학교 모바일 학생증</p>
     <div class="detail">
       <h1>{$userInfo.name ?? ""}&nbsp;</h1>
@@ -38,7 +38,9 @@
 <style lang="scss">
   .loading {
     width: 100%;
-    height: 311px;
+    height: 100%;
+    min-height: 209px;
+    max-height: 311px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,7 +51,7 @@
     border-radius: 12px 12px 0 0;
     padding: 20px;
     height: 100%;
-    min-height: 209px;
+    min-height: 201px;
     max-height: 311px;
 
     display: flex;

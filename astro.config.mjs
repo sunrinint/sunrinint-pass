@@ -13,7 +13,7 @@ export default defineConfig({
         enabled: true,
         /* other options */
       },
-      includeAssets: ["src/assets/**/*", "favicon.svg", "logo.svg"],
+      includeAssets: ["favicon.svg", "logo.svg"],
       manifest: {
         name: "SunrinInt = 모바일 학생증 서비스",
         short_name: "IntPass",
