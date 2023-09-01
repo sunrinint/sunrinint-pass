@@ -25,7 +25,7 @@ const DEFAULT_USER_INFO: UserInfo = {
   barcode: "",
 };
 
-export const userInfo = persistentMap<UserInfo>("user-info", DEFAULT_USER_INFO);
+export const userInfo = persistentMap<UserInfo>("user-info");
 
 export const isEmpty = computed([userInfo], () => {
   return userInfo.get().name === "";
@@ -33,4 +33,11 @@ export const isEmpty = computed([userInfo], () => {
 
 export const resetUserInfo = () => {
   userInfo.set(DEFAULT_USER_INFO);
+  userInfo.set({
+    name: "",
+    division: "",
+    email: "",
+    date: "",
+    barcode: "",
+  });
 };

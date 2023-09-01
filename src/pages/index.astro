@@ -15,10 +15,7 @@ import Header from "../components/Header.astro";
     <div class="pass_wrapper">
       <div class="pass">
         <Info client:load />
-        <div class="barcode">
-          <Barcode client:idle />
-          <p>S2220208</p>
-        </div>
+        <Barcode client:load />
       </div>
       <button class="logout">
         <p>로그아웃</p>
@@ -29,7 +26,7 @@ import Header from "../components/Header.astro";
 </Layout>
 
 <script>
-  import User from "../api/User";
+  // import User from "../api/User";
   import { isEmpty, resetUserInfo } from "../stores/info";
 
   const logout = document.querySelector(".logout");
@@ -40,11 +37,8 @@ import Header from "../components/Header.astro";
   });
 
   if (!isEmpty) {
-    User.GetMe().then((res) => {
-      console.log(res);
-    });
-
-    // location.href = "/login";
+    resetUserInfo();
+    location.href = "/login";
   }
 </script>
 
