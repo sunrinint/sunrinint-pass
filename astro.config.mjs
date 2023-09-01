@@ -20,9 +20,9 @@ export default defineConfig({
         description: "My Awesome App description",
         icons: [
           {
-            src: "pwa.svg",
+            src: "logo.png",
             sizes: "any",
-            type: "image/svg+xml",
+            type: "image/png",
           },
           // {
           //   src: "pwa-192x192.png",
@@ -36,11 +36,9 @@ export default defineConfig({
           // },
         ],
         workbox: {
-          navigateFallback: '/404',
-          globPatterns: ['**/*.{css,js,html,svg,png,ico,txt}'],
-          globIgnores: [
-            "api/**/*",
-          ]
+          navigateFallback: "/404",
+          globPatterns: ["**/*.{css,js,html,svg,png,ico,txt}"],
+          globIgnores: ["api/**/*"],
         },
       },
     }),
