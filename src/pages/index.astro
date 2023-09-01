@@ -4,6 +4,8 @@ import Layout from "../layouts/Layout.astro";
 import Info from "../components/user/Info.svelte";
 import Barcode from "../components/user/Barcode.svelte";
 
+import { userInfo } from "../stores/info";
+
 import Logout from "../assets/logout.svg";
 import Background from "../assets/images/pass_background.svg";
 import Header from "../components/Header.astro";
@@ -15,7 +17,10 @@ import Header from "../components/Header.astro";
     <div class="pass_wrapper">
       <div class="pass">
         <Info client:load />
-        <Barcode client:load />
+        <div class="barcode">
+          <Barcode client:load />
+          <p>{userInfo.get().barcode}</p>
+        </div>
       </div>
       <button class="logout">
         <p>로그아웃</p>
