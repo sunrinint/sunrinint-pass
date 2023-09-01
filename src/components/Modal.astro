@@ -53,15 +53,38 @@ wrapper.addEventListener("click", () => {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    animation: fadeIn 0.2s ease-out;
   }
 
   .container {
-    min-width: 40%;
-    max-width: 80%;
+    width: 100%;
+    max-width: 480px;
     max-height: 80%;
+    margin: 0 20px;
 
     padding: 16px;
     border-radius: 8px;
     background-color: #fff;
+
+    animation: scaleIn 0.3s cubic-bezier(0, 0, 0, 1);
+  }
+
+  @keyframes scaleIn {
+    from {
+      transform: scale(1.08);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 </style>
