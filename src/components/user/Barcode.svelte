@@ -7,10 +7,10 @@
   function updateBarcode() {
     JsBarcode(barcode, $userInfo.barcode, {
       format: "CODE128",
-      lineColor: "#0aa",
-      width: 4,
-      height: 40,
+      lineColor: "#1C232E",
+      height: 48,
       displayValue: false,
+      margin: 0,
     });
   }
 
