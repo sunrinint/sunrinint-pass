@@ -4,16 +4,17 @@
 
 <style lang="scss">
   .loading {
-    display: inline-block;
+    display: flex;
     width: 80px;
     height: 80px;
+    align-items: center;
+    justify-content: center;
 
     &::after {
       content: " ";
       display: block;
       width: 64px;
       height: 64px;
-      margin: 8px;
       border-radius: 50%;
       border: 6px solid #fff;
       border-color: #fff transparent #fff transparent;
