@@ -13,11 +13,11 @@ export default defineConfig({
         enabled: true,
         /* other options */
       },
-      includeAssets: ["favicon.svg", "logo.svg"],
+      includeAssets: ["/assets/**/*", "favicon.svg", "logo.svg"],
       manifest: {
         name: "SunrinInt = 모바일 학생증 서비스",
         short_name: "IntPass",
-        description: "My Awesome App description",
+        description: "선린인터넷고등학교 모바일 학생증 서비스",
         icons: [
           {
             src: "logos/16.png",
