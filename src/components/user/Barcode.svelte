@@ -30,7 +30,7 @@
 
 <div class="barcode">
   <svg bind:this={barcode} />
-  <p>{$userInfo.barcode}</p>
+  <p>&nbsp;{$userInfo.barcode}&nbsp;</p>
 </div>
 
 <style lang="scss">
