@@ -17,10 +17,7 @@ import Header from "../components/Header.astro";
     <div class="pass_wrapper">
       <div class="pass">
         <Info client:load />
-        <div class="barcode">
-          <Barcode client:load />
-          <p>{userInfo.get().barcode}</p>
-        </div>
+        <Barcode client:load />
       </div>
       <button class="logout">
         <p>로그아웃</p>
@@ -102,24 +99,6 @@ import Header from "../components/Header.astro";
     &_wrapper {
       width: 100%;
       padding: 24px;
-    }
-
-    .barcode {
-      border-radius: 0 0 12px 12px;
-      padding: 24px 32px;
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      background-color: white;
-
-      p {
-        color: #1c232e;
-        font-size: 15px;
-        font-weight: 400;
-        line-height: 150%;
-      }
     }
   }
 </style>

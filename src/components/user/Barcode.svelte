@@ -28,8 +28,27 @@
   let barcode: SVGSVGElement;
 </script>
 
-<div class="wrapper">
+<div class="barcode">
   <svg bind:this={barcode} />
+  <p>{$userInfo.barcode}</p>
 </div>
 
-<style></style>
+<style lang="scss">
+  .barcode {
+    border-radius: 0 0 12px 12px;
+    padding: 24px 32px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background-color: white;
+
+    p {
+      color: #1c232e;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 150%;
+    }
+  }
+</style>
