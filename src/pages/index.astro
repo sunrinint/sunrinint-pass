@@ -32,7 +32,7 @@ import Header from "../components/Header.astro";
 
 <script>
   // import User from "../api/User";
-  import { isEmpty, resetUserInfo } from "../stores/info";
+  import { resetUserInfo, isEmpty } from "../stores/info";
 
   const logout = document.querySelector(".logout");
 
@@ -40,11 +40,6 @@ import Header from "../components/Header.astro";
     resetUserInfo();
     location.href = "/login";
   });
-
-  if (!isEmpty) {
-    resetUserInfo();
-    location.href = "/login";
-  }
 </script>
 
 <style lang="scss" scoped>

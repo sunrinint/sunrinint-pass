@@ -5,6 +5,7 @@
   import { accessToken } from "../../stores/auth";
   import Loading from "../Loading.svelte";
   import Pass from "../../api/Pass";
+  import { DepartmentNames } from "../../constants/departments";
 
   onMount(async () => {
     if (isEmpty.get()) {
@@ -22,8 +23,9 @@
     <p>선린인터넷고등학교 모바일 학생증</p>
     <div class="detail">
       <h1>{$userInfo.name}</h1>
-      <h2>{$userInfo.division}</h2>
+      <h2>{DepartmentNames[$userInfo.division]}</h2>
       <p>{$userInfo.email}</p>
+      ㅈ
     </div>
 
     <p>{$userInfo.date}</p>

@@ -40,26 +40,22 @@ export const authInstance = () => {
   instance.interceptors.response.use(
     (config) => config,
     async (error: AxiosError) => {
-      if (error.response?.status === 401) {
-        return await apiInstance()
-          .get("/auth/refresh")
-          .then(async (res) => {
-            accessToken.set(res.data.accessToken);
-            const data = await authInstance().request({
-              method: originalRequest[0].method,
-              url: originalRequest[0].url,
-              data: originalRequest[0].data,
-            });
-            originalRequest = [];
-            return data;
-          })
-          .catch((err: AxiosError) => {
-            if (err.response?.status === 401) {
-              accessToken.set("");
-              // window.location.href = "/login";
-            }
+      return await apiInstance()
+        .get("/auth/refresh")
+        .then(async (res) => {
+          accessToken.set(res.data.accessToken);
+          const data = await authInstance().request({
+            method: originalRequest[0].method,
+            url: originalRequest[0].url,
+            data: originalRequest[0].data,
           });
-      }
+          originalRequest = [];
+          return data;
+        })
+        .catch((err: AxiosError) => {
+          accessToken.set("");
+          window.location.href = "/login";
+        });
       return error;
     }
   );
