@@ -31,14 +31,14 @@ import Header from "../components/Header.astro";
 </Layout>
 
 <script>
-  // import User from "../api/User";
-  import { resetUserInfo, isEmpty } from "../stores/info";
+  import User from "../api/User";
+  import { resetUserInfo } from "../stores/info";
 
   const logout = document.querySelector(".logout");
 
   logout?.addEventListener("click", () => {
     resetUserInfo();
-    location.href = "/login";
+    User.Logout().then(() => (location.href = "/login"));
   });
 </script>
 
