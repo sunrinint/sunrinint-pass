@@ -1,7 +1,18 @@
 <script>
+  import { onMount } from "svelte";
   import Background from "../../assets/images/pass_background.svg";
   import { userInfo, isEmpty } from "../../stores/info";
+  import { accessToken } from "../../stores/auth";
   import Loading from "../Loading.svelte";
+  import Pass from "../../api/Pass";
+
+  onMount(async () => {
+    if (isEmpty.get()) {
+      Pass.Get().then((data) => {
+        userInfo.set(data);
+      });
+    }
+  });
 </script>
 
 <div class="info">
