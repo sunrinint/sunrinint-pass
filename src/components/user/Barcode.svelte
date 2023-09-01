@@ -4,19 +4,8 @@
   import Pass from "../../api/Pass";
   import { isEmpty, userInfo } from "../../stores/info";
 
-  onMount(() => {
-    if (isEmpty.get()) {
-      Pass.Get().then((data) => {
-        userInfo.set(data);
-      });
-    }
-  });
-
-  console.log($isEmpty);
-
-  $: if (!$isEmpty) {
-    console.log($userInfo);
-    JsBarcode("#barcode", userInfo.get().barcode, {
+  function updateBarcode() {
+    JsBarcode(barcode, $userInfo.barcode, {
       format: "CODE128",
       lineColor: "#0aa",
       width: 4,
@@ -24,10 +13,23 @@
       displayValue: false,
     });
   }
+
+  onMount(() => {
+    if (isEmpty.get()) {
+      Pass.Get().then((data) => {
+        userInfo.set(data);
+        updateBarcode();
+      });
+    } else {
+      updateBarcode();
+    }
+  });
+
+  let barcode: SVGSVGElement;
 </script>
 
 <div class="wrapper">
-  <div id="barcode" />
+  <svg bind:this={barcode} />
 </div>
 
 <style></style>
