@@ -1,0 +1,75 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import { Image } from "astro:assets";
+import NotFound from "../assets/404.svg";
+---
+
+<Layout title="모바일 학생증 서비스">
+  <div class="wrapper">
+    <Header />
+    <div class="content">
+      <Image src={NotFound} alt="Not Found" />
+      <div class="text">
+        <p>페이지를 찾을 수 없습니다.</p>
+        <p>올바른 주소로 접근했는지 확인해주세요.</p>
+      </div>
+      <button class="back"> 메인 페이지로 돌아가기</button>
+    </div>
+  </div>
+
+  <style lang="scss" scoped>
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      background-color: var(--Grayscale-20);
+    }
+
+    .wrapper {
+      width: 100%;
+      height: 100%;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .content {
+      display: flex;
+      padding: 0px 20px;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+
+      img {
+      }
+
+      .text {
+        color: var(--Grayscale-30, #4f5d70);
+        text-align: center;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 150%; /* 22.5px */
+      }
+
+      .back {
+        display: flex;
+        padding: 12px 20px;
+        align-items: center;
+        gap: 4px;
+
+        border-radius: 30px;
+        background: var(--Grayscale-10, #fff);
+
+        color: var(--Grayscale-30, #4f5d70);
+        text-align: center;
+        font-size: 15px;
+        font-weight: 400;
+      }
+    }
+  </style>
+</Layout>
