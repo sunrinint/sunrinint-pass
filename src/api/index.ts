@@ -35,8 +35,6 @@ export const authInstance = () => {
     return config;
   });
 
-  console.log(accessToken.get());
-
   instance.interceptors.response.use(
     (config) => config,
     async (error: AxiosError) => {

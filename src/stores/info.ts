@@ -20,7 +20,7 @@ const DEFAULT_USER_INFO: UserInfo = {
 export const userInfo = persistentMap<UserInfo>("user-info");
 
 export const isEmpty = computed([userInfo], () => {
-  return userInfo.get().name === "";
+  return (userInfo.get().name ?? "") === "";
 });
 
 export const resetUserInfo = () => {
