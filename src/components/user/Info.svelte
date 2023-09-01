@@ -25,7 +25,6 @@
       <h1>{$userInfo.name ?? ""}&nbsp;</h1>
       <h2>{DepartmentNames[$userInfo.division] ?? ""}&nbsp;</h2>
       <p>{$userInfo.email ?? ""}&nbsp;</p>
-      ㅈ
     </div>
 
     <p>{$userInfo.date ?? ""}&nbsp;</p>
