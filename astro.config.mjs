@@ -20,20 +20,35 @@ export default defineConfig({
         description: "My Awesome App description",
         icons: [
           {
-            src: "logo.png",
-            sizes: "any",
+            src: "logos/16.png",
+            sizes: "16x16",
             type: "image/png",
           },
-          // {
-          //   src: "pwa-192x192.png",
-          //   sizes: "192x192",
-          //   type: "image/png",
-          // },
-          // {
-          //   src: "pwa-512x512.png",
-          //   sizes: "512x512",
-          //   type: "image/png",
-          // },
+          {
+            src: "logos/32.png",
+            sizes: "32x32",
+            type: "image/png",
+          },
+          {
+            src: "logos/180.png",
+            sizes: "180x180",
+            type: "image/png",
+          },
+          {
+            src: "logos/192.png",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          {
+            src: "logos/512.png",
+            sizes: "512x512",
+            type: "image/png",
+          },
+          {
+            src: "logos/1024.png",
+            sizes: "1024x1024",
+            type: "image/png",
+          },
         ],
         workbox: {
           navigateFallback: "/404",
