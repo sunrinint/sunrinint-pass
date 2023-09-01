@@ -44,6 +44,8 @@
     gap: 8px;
     background-color: white;
 
+    z-index: 1;
+
     p {
       color: #1c232e;
       font-size: 15px;
