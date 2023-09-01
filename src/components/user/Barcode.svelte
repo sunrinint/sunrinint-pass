@@ -36,7 +36,7 @@
 <style lang="scss">
   .barcode {
     border-radius: 0 0 12px 12px;
-    padding: 24px 32px;
+    padding: 20px 32px;
 
     display: flex;
     flex-direction: column;
