@@ -10,7 +10,7 @@ export default defineConfig({
     svelte(),
     AstroPWA({
       devOptions: {
-        // enabled: true,
+        enabled: true,
         /* other options */
       },
       includeAssets: ["favicon.svg", "logo.svg"],
@@ -38,6 +38,9 @@ export default defineConfig({
         workbox: {
           navigateFallback: '/404',
           globPatterns: ['**/*.{css,js,html,svg,png,ico,txt}'],
+          globIgnores: [
+            "api/**/*",
+          ]
         },
       },
     }),
