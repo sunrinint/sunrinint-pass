@@ -18,10 +18,10 @@
     if (isEmpty.get()) {
       Pass.GetEncrypted().then((data) => {
         encryptedUserInfo.set(data);
-        // updateBarcode();
+        updateBarcode();
       });
     } else {
-      // updateBarcode();
+      updateBarcode();
     }
   });
 
