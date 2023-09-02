@@ -2,7 +2,8 @@
   import { onMount } from "svelte";
   import JsBarcode from "jsbarcode";
   import Pass from "../../api/Pass";
-  import { encryptedUserInfo, isEmpty, userInfo } from "../../stores/info";
+  import { isEmpty, userInfo } from "../../stores/info";
+  import { encryptedUserInfo } from "../../stores/encinfo";
 
   function updateBarcode() {
     JsBarcode(barcode, $userInfo.barcode, {
@@ -14,17 +15,14 @@
     });
   }
 
-  userInfo.subscribe((value) => {
-    if (value) {
-      updateBarcode();
-    }
-  });
-
   onMount(() => {
     if (isEmpty.get()) {
       Pass.GetEncrypted().then((data) => {
         encryptedUserInfo.set(data);
+        // updateBarcode();
       });
+    } else {
+      // updateBarcode();
     }
   });
 

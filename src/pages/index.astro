@@ -16,8 +16,8 @@ import Header from "../components/Header.astro";
     <Header />
     <div class="pass_wrapper">
       <div class="pass">
-        <Info client:load />
-        <Barcode client:load />
+        <Info client:only="svelte" />
+        <Barcode client:only="svelte" />
       </div>
       <button class="logout">
         <p>로그아웃</p>
@@ -29,7 +29,7 @@ import Header from "../components/Header.astro";
 
 <script>
   import User from "../api/User";
-  import { resetUserInfo } from "../stores/info";
+  import { resetUserInfo } from "../stores/encinfo";
 
   const logout = document.querySelector(".logout");
 

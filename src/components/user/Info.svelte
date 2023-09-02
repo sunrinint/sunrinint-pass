@@ -1,13 +1,15 @@
 <script>
   import { onMount } from "svelte";
   import Background from "../../assets/images/pass_background.svg";
-  import { userInfo, isEmpty, encryptedUserInfo } from "../../stores/info";
-  import { accessToken } from "../../stores/auth";
+  import { userInfo, isEmpty } from "../../stores/info";
+  import { encryptedUserInfo } from "../../stores/encinfo";
   import Loading from "../Loading.svelte";
   import Pass from "../../api/Pass";
   import { DepartmentNames } from "../../constants/departments";
+  import JSEncrypt from "jsencrypt";
 
   onMount(async () => {
+    window.JSEncrypt = JSEncrypt;
     if (isEmpty.get()) {
       Pass.GetEncrypted().then((data) => {
         encryptedUserInfo.set(data);
