@@ -32,8 +32,6 @@ export const userInfo = computed([encryptedUserInfo], (encrypted): UserInfo => {
 });
 
 export const isEmpty = computed([encryptedUserInfo], () => {
-  console.log(encryptedUserInfo.get());
-  console.log(decrypt(encryptedUserInfo.get()));
   return encryptedUserInfo.get() === "" || !decrypt(encryptedUserInfo.get());
 });
 
