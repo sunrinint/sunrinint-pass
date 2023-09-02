@@ -20,7 +20,7 @@ export default defineConfig({
     AstroPWA({
       registerType: "autoUpdate",
       devOptions: {
-        enabled: true,
+        // enabled: true,
         /* other options */
       },
       includeAssets: ["favicon.svg", "logo.svg"],
