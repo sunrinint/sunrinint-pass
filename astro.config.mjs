@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import { nodePolyfills } from 'vite-plugin-node-polyfills';
+import { nodePolyfills } from "vite-plugin-node-polyfills";
 import react from "@astrojs/react";
 import svelte from "@astrojs/svelte";
 import AstroPWA from "@vite-pwa/astro";
@@ -20,7 +20,7 @@ export default defineConfig({
     AstroPWA({
       registerType: "autoUpdate",
       devOptions: {
-        // enabled: true,
+        enabled: true,
         /* other options */
       },
       includeAssets: ["favicon.svg", "logo.svg"],
