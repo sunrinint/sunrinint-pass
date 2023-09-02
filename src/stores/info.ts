@@ -1,5 +1,8 @@
-import { persistentMap } from "@nanostores/persistent";
-import { computed } from "nanostores";
+import { persistentAtom, persistentMap } from "@nanostores/persistent";
+// import JSEncrypt from "jsencrypt";
+import { computed, map } from "nanostores";
+import { publicKey } from "../keys/pass";
+import * as crypto from "crypto";
 
 export type UserInfo = {
   name: string;
@@ -17,19 +20,31 @@ const DEFAULT_USER_INFO: UserInfo = {
   barcode: "",
 };
 
-export const userInfo = persistentMap<UserInfo>("user-info");
+export const encryptedUserInfo = persistentAtom<string>(
+  "encryptedUserInfo",
+  ""
+);
 
-export const isEmpty = computed([userInfo], () => {
-  return (userInfo.get().name ?? "") === "";
+export const userInfo = computed(encryptedUserInfo, (encrypted): UserInfo => {
+  if (encrypted === "") return DEFAULT_USER_INFO;
+  const decrypted = decrypt(encrypted);
+  if (!decrypted) return DEFAULT_USER_INFO;
+  return JSON.parse(decrypted);
 });
 
+export const isEmpty = computed([encryptedUserInfo], () => {
+  return encryptedUserInfo.get() === "" || !decrypt(encryptedUserInfo.get());
+});
+
+function decrypt(encrypted: string) {
+  // const crypto = new JSEncrypt();
+  // crypto.setPublicKey(publicKey);
+  // return crypto.decrypt(encrypted);
+  return crypto
+    .publicDecrypt(publicKey, Buffer.from(encrypted, "base64"))
+    .toString();
+}
+
 export const resetUserInfo = () => {
-  userInfo.set(DEFAULT_USER_INFO);
-  userInfo.set({
-    name: "",
-    division: "",
-    email: "",
-    date: "",
-    barcode: "",
-  });
+  encryptedUserInfo.set("");
 };

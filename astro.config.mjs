@@ -9,6 +9,7 @@ export default defineConfig({
     react(),
     svelte(),
     AstroPWA({
+      registerType: "autoUpdate",
       devOptions: {
         enabled: true,
         /* other options */

@@ -1,5 +1,6 @@
-import { Get } from "./get";
+import { Get, GetEncrypted } from "./get";
 
 export default {
   Get,
+  GetEncrypted,
 };
