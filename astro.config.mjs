@@ -1,10 +1,19 @@
 import { defineConfig } from "astro/config";
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import react from "@astrojs/react";
 import svelte from "@astrojs/svelte";
 import AstroPWA from "@vite-pwa/astro";
 
 // https://astro.build/config
 export default defineConfig({
+  vite: {
+    plugins: [
+      nodePolyfills({
+        // Whether to polyfill `node:` protocol imports.
+        protocolImports: true,
+      }),
+    ],
+  },
   integrations: [
     react(),
     svelte(),

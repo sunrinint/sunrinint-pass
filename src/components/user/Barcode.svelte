@@ -2,8 +2,7 @@
   import { onMount } from "svelte";
   import JsBarcode from "jsbarcode";
   import Pass from "../../api/Pass";
-  import { isEmpty, userInfo } from "../../stores/info";
-  import { encryptedUserInfo } from "../../stores/encinfo";
+  import { encryptedUserInfo, isEmpty, userInfo } from "../../stores/info";
 
   function updateBarcode() {
     JsBarcode(barcode, $userInfo.barcode, {
