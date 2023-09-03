@@ -22,9 +22,9 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# yarn berry
-.pnp.*
+# yarn berry with zero install
 .yarn/*
+!.yarn/cache
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
