@@ -47,12 +47,12 @@
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    background-color: white;
+    background-color: var(--Grayscale-10);
 
     z-index: 1;
 
     p {
-      color: #1c232e;
+      color: var(--Grayscale-50);
       font-size: 15px;
       font-weight: 400;
       line-height: 150%;
