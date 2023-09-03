@@ -29,7 +29,7 @@
     elementTag={"svg"}
     options={{
       format: "CODE128",
-      lineColor: "#1C232E",
+      lineColor: "var(--Grayscale-50)",
       height: 48,
       displayValue: false,
       margin: 0,
@@ -52,7 +52,7 @@
     z-index: 1;
 
     p {
-      color: #1c232e;
+      color: var(--Grayscale-50);
       font-size: 15px;
       font-weight: 400;
       line-height: 150%;
