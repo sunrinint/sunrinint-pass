@@ -15,10 +15,10 @@ import Header from "../components/Header.astro";
       <div class="pass">
         <Info client:idle />
       </div>
-      <button class="logout">
+      <!-- <button class="logout">
         <p>로그아웃</p>
         <Image src={Logout} alt="logout" width={16} height={16} />
-      </button>
+      </button> -->
     </div>
   </div>
 </Layout>
@@ -48,27 +48,27 @@ import Header from "../components/Header.astro";
     align-items: center;
     justify-content: center;
 
-    .logout {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 24px;
+    // .logout {
+    //   position: absolute;
+    //   left: 50%;
+    //   transform: translateX(-50%);
+    //   bottom: 24px;
 
-      padding: 12px 20px;
-      gap: 4px;
-      border-radius: 30px;
+    //   padding: 12px 20px;
+    //   gap: 4px;
+    //   border-radius: 30px;
 
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      background-color: var(--Grayscale-10);
+    //   display: flex;
+    //   align-items: center;
+    //   gap: 4px;
+    //   background-color: var(--Grayscale-10);
 
-      p {
-        color: var(--Grayscale-30);
-        font-size: 15px;
-        font-weight: 400;
-      }
-    }
+    //   p {
+    //     color: var(--Grayscale-30);
+    //     font-size: 15px;
+    //     font-weight: 400;
+    //   }
+    // }
   }
 
   @keyframes slideIn {

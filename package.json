@@ -26,7 +26,8 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "sass": "^1.66.1",
-    "svelte": "^4.0.0"
+    "svelte": "^4.0.0",
+    "swiper": "^10.2.0"
   },
   "devDependencies": {
     "@types/node-rsa": "^1.1.1",

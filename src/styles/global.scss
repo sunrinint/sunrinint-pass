@@ -15,8 +15,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
 
   font-family: 'SUIT', sans-serif;
+}
+
+img {
+  pointer-events: none;
 }
 
 body {
