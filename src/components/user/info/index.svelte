@@ -7,8 +7,10 @@
   import { register } from "swiper/element/bundle";
   import Flip from "../../../assets/flip.svg";
   import { slide } from "svelte/transition";
+  import type Swiper from "swiper";
 
   let cardRef: HTMLDivElement;
+  let swiperRef: { swiper: Swiper };
 
   let side: "front" | "back" = "front";
 
@@ -21,8 +23,14 @@
     }
   });
 
-  function onSlideChange() {
-    flip();
+  function onSlideChange(e: any) {
+    if (e.detail[0].activeIndex === 0) {
+      side = "front";
+      cardRef.style.transform = "rotateY(0deg)";
+    } else {
+      side = "back";
+      cardRef.style.transform = "rotateY(180deg)";
+    }
   }
 
   const flip = () => {
@@ -30,8 +38,10 @@
 
     if (side === "front") {
       cardRef.style.transform = "rotateY(0deg)";
+      swiperRef.swiper.slideTo(0);
     } else {
       cardRef.style.transform = "rotateY(180deg)";
+      swiperRef.swiper.slideTo(1);
     }
   };
 </script>
@@ -42,10 +52,10 @@
     class="swiper"
     on:slidechange={onSlideChange}
     speed="0"
-    slides-per-view="1"
     follow-finger={false}
+    bind:this={swiperRef}
   >
-    <swiper-slide />
+    <swiper-slide>test</swiper-slide>
     <swiper-slide />
   </swiper-container>
   <div class="card" bind:this={cardRef}>
@@ -67,7 +77,8 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    opacity: 0;
+    /* opacity: 0; */
+    color: white;
   }
 
   div {
@@ -118,8 +129,7 @@
     transform-style: preserve-3d;
     border-radius: 12px;
     .front,
-    .back,
-    .middle {
+    .back {
       position: absolute;
       width: 100%;
       height: 100%;
