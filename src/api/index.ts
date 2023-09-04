@@ -10,6 +10,18 @@ export const apiInstance = () =>
     },
   });
 
+function refresh() {
+  return apiInstance()
+    .get("/auth/refresh")
+    .then((res) => (accessToken.set(res.data.accessToken), res))
+    .catch((err: AxiosError) => {
+      if (err.response?.status === 401) {
+        accessToken.set("");
+        window.location.href = "/login";
+      }
+    });
+}
+
 export const authInstance = () => {
   const instance = axios.create({
     baseURL: import.meta.env.PUBLIC_API_URL,
@@ -25,7 +37,8 @@ export const authInstance = () => {
     data: string;
   }> = [];
 
-  instance.interceptors.request.use((config) => {
+  instance.interceptors.request.use(async (config) => {
+    if (accessToken.get() === "") await refresh();
     config.headers["Authorization"] = `Bearer ${accessToken.get()}`;
     originalRequest.push({
       url: config.url || "",
@@ -39,10 +52,8 @@ export const authInstance = () => {
     (config) => config,
     async (error: AxiosError) => {
       if (error.response?.status === 401) {
-        return await apiInstance()
-          .get("/auth/refresh")
+        return await refresh()
           .then(async (res) => {
-            accessToken.set(res.data.accessToken);
             const data = await authInstance().request({
               method: originalRequest[0].method,
               url: originalRequest[0].url,
