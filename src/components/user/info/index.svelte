@@ -55,7 +55,7 @@
     follow-finger={false}
     bind:this={swiperRef}
   >
-    <swiper-slide>test</swiper-slide>
+    <swiper-slide />
     <swiper-slide />
   </swiper-container>
   <div class="card" bind:this={cardRef}>
