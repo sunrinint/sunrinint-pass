@@ -15,22 +15,7 @@
   });
 </script>
 
-<div class="info">
-  <!-- <img
-    class="logo-left"
-    src={Background.src}
-    alt="logo"
-    width={112}
-    height={135}
-  />
-  <img
-    class="logo-right"
-    src={Background.src}
-    alt="logo"
-    width={112}
-    height={135}
-  /> -->
-
+<div class="info info-back">
   {#if !$isEmpty}
     <p>선린인터넷고등학교 모바일 학생증</p>
     <div class="image">

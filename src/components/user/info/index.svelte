@@ -10,7 +10,7 @@
 
   let cardRef: HTMLDivElement;
 
-  let side: "front" | "back" = "back";
+  let side: "front" | "back" = "front";
 
   onMount(async () => {
     register();
@@ -21,9 +21,9 @@
     }
   });
 
-  const onProgress = (e: any) => {
+  function onSlideChange() {
     flip();
-  };
+  }
 
   const flip = () => {
     side = side === "front" ? "back" : "front";
@@ -40,7 +40,7 @@
   <div class="shadow" />
   <swiper-container
     class="swiper"
-    on:progress={onProgress}
+    on:slidechange={onSlideChange}
     speed="0"
     slides-per-view="1"
     follow-finger={false}
@@ -118,7 +118,8 @@
     transform-style: preserve-3d;
     border-radius: 12px;
     .front,
-    .back {
+    .back,
+    .middle {
       position: absolute;
       width: 100%;
       height: 100%;

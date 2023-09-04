@@ -23,8 +23,6 @@
 </script>
 
 <div class="info">
-  <img src={Background.src} alt="pass" width={200} height={242} />
-
   {#if !$isEmpty}
     <p>선린인터넷고등학교 모바일 학생증</p>
     <div class="detail">
@@ -38,6 +36,7 @@
     </div>
 
     <p>{$userInfo.date ?? ""}&nbsp;</p>
+    <img src={Background.src} alt="pass" width={200} height={242} />
   {:else}
     <div class="loading">
       <Loading />
@@ -67,6 +66,7 @@
     flex-direction: column;
     justify-content: space-between;
     position: relative;
+    z-index: 0;
 
     img {
       position: absolute;
