@@ -1,8 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
-import Info from "../components/user/Info.svelte";
-import Barcode from "../components/user/Barcode.svelte";
+import Info from "../components/user/info/index.svelte";
 
 import Logout from "../assets/logout.svg";
 import Background from "../assets/images/pass_background.svg";
@@ -14,8 +13,7 @@ import Header from "../components/Header.astro";
     <Header />
     <div class="pass_wrapper">
       <div class="pass">
-        <Info client:only="svelte" />
-        <Barcode client:only="svelte" />
+        <Info client:idle />
       </div>
       <button class="logout">
         <p>로그아웃</p>
@@ -90,7 +88,7 @@ import Header from "../components/Header.astro";
 
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 16px 20px 0px rgba(82, 99, 133, 0.12);
+    // box-shadow: 0px 16px 20px 0px rgba(82, 99, 133, 0.12);
 
     border-radius: 16px;
     margin: 0 auto;

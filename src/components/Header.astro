@@ -3,18 +3,25 @@ import { Image } from "astro:assets";
 
 import Logo from "../assets/logo.svg";
 import Info from "../assets/info.svg";
+import Settings from "../assets/settings.svg";
 ---
 
 <div class="header">
+  <Image id="info" src={Info} alt="info" width={24} height={24} />
   <Image id="logo" src={Logo} alt="landing" width={64} height={24} />
-  <Image id="info" src={Info} alt="info" width={16} height={16} />
+  <Image id="settings" src={Settings} alt="settings" width={24} height={24} />
 </div>
 <script>
   const info = document.getElementById("info");
   const logo = document.getElementById("logo");
+  const settings = document.getElementById("settings");
 
   info?.addEventListener("click", () => {
     window.location.href = "/info";
+  });
+
+  settings?.addEventListener("click", () => {
+    window.location.href = "/settings";
   });
 
   logo?.addEventListener("click", () => {
@@ -25,13 +32,14 @@ import Info from "../assets/info.svg";
 <style scoped>
   .header {
     width: 100%;
-    padding: 16px 0;
+    height: 56px;
+    padding: 16px;
 
     position: fixed;
     top: 0;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row;
     gap: 8px;

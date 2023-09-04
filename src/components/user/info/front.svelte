@@ -1,11 +1,17 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
-  import Background from "../../assets/images/pass_background.svg";
-  import { userInfo, isEmpty, encryptedUserInfo } from "../../stores/info";
-  import Loading from "../Loading.svelte";
-  import Pass from "../../api/Pass";
-  import { DepartmentNames } from "../../constants/departments";
-  import Barcode from "./Barcode.svelte";
+  import Background from "../../../assets/images/pass_background.svg";
+  import { userInfo, isEmpty, encryptedUserInfo } from "../../../stores/info";
+  import Loading from "../../Loading.svelte";
+  import Pass from "../../../api/Pass";
+  import { DepartmentNames } from "../../../constants/departments";
+  import Barcode from "../Barcode.svelte";
+
+  function isDepartmentName(
+    name: string
+  ): name is keyof typeof DepartmentNames {
+    return name in DepartmentNames;
+  }
 
   onMount(async () => {
     if (isEmpty.get()) {
@@ -16,27 +22,29 @@
   });
 </script>
 
-<div class="wrapper">
-  <div class="info">
-    <img src={Background.src} alt="pass" width={200} height={242} />
+<div class="info">
+  <img src={Background.src} alt="pass" width={200} height={242} />
 
-    {#if !$isEmpty}
-      <p>선린인터넷고등학교 모바일 학생증</p>
-      <div class="detail">
-        <h1>{$userInfo.name ?? ""}&nbsp;</h1>
-        <h2>{DepartmentNames[$userInfo.division] ?? ""}&nbsp;</h2>
-        <p>{$userInfo.email ?? ""}&nbsp;</p>
-      </div>
+  {#if !$isEmpty}
+    <p>선린인터넷고등학교 모바일 학생증</p>
+    <div class="detail">
+      <h1>{$userInfo.name ?? ""}&nbsp;</h1>
+      <h2>
+        {isDepartmentName($userInfo.division)
+          ? DepartmentNames[$userInfo.division]
+          : ""}&nbsp;
+      </h2>
+      <p>{$userInfo.email ?? ""}&nbsp;</p>
+    </div>
 
-      <p>{$userInfo.date ?? ""}&nbsp;</p>
-    {:else}
-      <div class="loading">
-        <Loading />
-      </div>
-    {/if}
-  </div>
-  <Barcode />
+    <p>{$userInfo.date ?? ""}&nbsp;</p>
+  {:else}
+    <div class="loading">
+      <Loading />
+    </div>
+  {/if}
 </div>
+<Barcode />
 
 <style lang="scss">
   .loading {
