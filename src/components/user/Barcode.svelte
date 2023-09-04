@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import Barcode from "svelte-barcode";
+  import Barcode from "@sunrin-int/svelte-barcode";
   import Pass from "../../api/Pass";
   import { encryptedUserInfo, isEmpty, userInfo } from "../../stores/info";
 
