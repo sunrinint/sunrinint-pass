@@ -16,8 +16,9 @@
       width: 64px;
       height: 64px;
       border-radius: 50%;
-      border: 6px solid #fff;
-      border-color: #fff transparent #fff transparent;
+      border: 6px solid var(--Grayscale-10);
+      border-color: var(--Grayscale-10) transparent var(--Grayscale-10)
+        transparent;
       animation: loading 1.2s linear infinite;
     }
   }

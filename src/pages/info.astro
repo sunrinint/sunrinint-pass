@@ -18,7 +18,7 @@ const Contents = [
   {
     title: "이슈를 제보하고 싶어요",
     content:
-      '불편함이 있으시다면 <a target="_blank" href="mailto:sunrinint.official@gmail.com">sunrinint.official@gmail.com</a>으로 메일을 보내주시거나 인스타그램 <a target="_blank" href="https://www.instagram.com/sunrin_int/">@sunrin_int</a>에게 문의해주시면 됩니다.',
+      '불편함이 있으시다면 <a target="_blank" href="mailto:intranet@sunrin.in">intranet@sunrin.in</a>으로 메일을 보내주시거나 인스타그램 <a target="_blank" href="https://www.instagram.com/sunrin_int/">@sunrin_int</a>에게 문의해주시면 됩니다.',
   },
   {
     title: "프로젝트에 기여하고 싶어요",
@@ -26,6 +26,11 @@ const Contents = [
       'SunrinINT는 일부 오픈소스로 운영되고 있습니다. <a target="_blank" href="https://github.com/sunrin-int/sunrinint-pass">GitHub</a>에서 PR해주시면 검토 후 반영하도록 하겠습니다.',
   },
 ];
+
+// format: YYYY년 MM월 DD일
+const BUILD_DATE = `${new Date().getFullYear()}년 ${
+  new Date().getMonth() + 1
+}월 ${new Date().getDate()}일`;
 ---
 
 <Layout title="모바일 학생증 서비스">
@@ -38,7 +43,10 @@ const Contents = [
         ))
       }
     </div>
-    <div class="footer">&copy; 2023 SunrinINT.</div>
+    <div class="footer">
+      <p>서비스 버전: {BUILD_DATE}</p>
+      <p>&copy; 2023 SunrinINT.</p>
+    </div>
   </div>
 
   <style lang="scss" scoped>
@@ -66,14 +74,21 @@ const Contents = [
     }
 
     .footer {
-      color: var(--Grayscale-30);
-      text-align: center;
-      font-family: SUIT;
-      font-size: 15px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 150%; /* 22.5px */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
       margin-bottom: 40px;
+
+      p {
+        color: var(--Grayscale-30);
+        text-align: center;
+        font-family: SUIT;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%; /* 22.5px */
+      }
     }
   </style>
 </Layout>

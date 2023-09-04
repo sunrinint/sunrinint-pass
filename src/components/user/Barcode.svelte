@@ -1,35 +1,40 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import JsBarcode from "jsbarcode";
+  import Barcode from "@sunrin-int/svelte-barcode";
   import Pass from "../../api/Pass";
   import { encryptedUserInfo, isEmpty, userInfo } from "../../stores/info";
 
-  function updateBarcode() {
-    JsBarcode(barcode, $userInfo.barcode, {
-      format: "CODE128",
-      lineColor: "#1C232E",
-      height: 48,
-      displayValue: false,
-      margin: 0,
-    });
-  }
+  let barcode: string;
+
+  userInfo.subscribe((data) => {
+    if (data) {
+      barcode = data.barcode;
+    }
+  });
 
   onMount(() => {
     if (isEmpty.get()) {
       Pass.GetEncrypted().then((data) => {
         encryptedUserInfo.set(data);
-        updateBarcode();
       });
     } else {
-      updateBarcode();
+      barcode = $userInfo.barcode;
     }
   });
-
-  let barcode: SVGSVGElement;
 </script>
 
 <div class="barcode">
-  <svg bind:this={barcode} />
+  <Barcode
+    value={barcode}
+    elementTag={"svg"}
+    options={{
+      format: "CODE128",
+      lineColor: "var(--Grayscale-50)",
+      height: 48,
+      displayValue: false,
+      margin: 0,
+    }}
+  />
   <p>&nbsp;{$userInfo.barcode ?? ""}&nbsp;</p>
 </div>
 
@@ -47,7 +52,7 @@
     z-index: 1;
 
     p {
-      color: #1c232e;
+      color: var(--Grayscale-50);
       font-size: 15px;
       font-weight: 400;
       line-height: 150%;

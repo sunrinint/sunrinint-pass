@@ -48,7 +48,7 @@
   }
 
   .info {
-    background: #1c232e;
+    background: var(--Grayscale-50);
     border-radius: 12px 12px 0 0;
     padding: 20px;
     height: 100%;
@@ -74,7 +74,7 @@
     }
 
     h1 {
-      color: #fff;
+      color: var(--Grayscale-10);
       font-size: 33px;
       font-weight: 600;
       line-height: 150%;
@@ -82,7 +82,7 @@
     }
 
     h2 {
-      color: #d7e4f5;
+      color: var(--Blue-ish);
       font-size: 17px;
       font-weight: 600;
       line-height: 150%;
