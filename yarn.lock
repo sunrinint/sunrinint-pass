@@ -2001,12 +2001,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sunrin-int/svelte-barcode@https://github.com/sunrin-int/svelte-barcode#v3.0.0":
+"@sunrin-int/svelte-barcode@https://github.com/sunrin-int/svelte-barcode#v3.0.1":
   version: 3.0.0
-  resolution: "@sunrin-int/svelte-barcode@https://github.com/sunrin-int/svelte-barcode.git#commit=c83fcb989605c3bbd7d0c28f770367b553067be2"
+  resolution: "@sunrin-int/svelte-barcode@https://github.com/sunrin-int/svelte-barcode.git#commit=ab7843f0ba773a43ac89cd7af4a955effcb218ad"
   dependencies:
     jsbarcode: ^3.11.5
-  checksum: 905a6a44c402e60ac54b86be155d1d3a97c54904edf2964034e503288d4b87ff416927a9463a01b39881bd08430bbcdc92ce65de3d99ceeb6b49bf3a26b07c53
+  checksum: 05604f19f07f7956636ae26e50f1f62eb77d1aacdc2e8f40e1fb10f93db5858f4fee226a157b8ff3b5fbea860d75ccbdac79ebde439d5e9388899e381a50f8ed
   languageName: node
   linkType: hard
 
@@ -8235,7 +8235,7 @@ __metadata:
     "@astrojs/svelte": ^4.0.0
     "@nanostores/persistent": ^0.9.1
     "@nanostores/react": ^0.7.1
-    "@sunrin-int/svelte-barcode": "https://github.com/sunrin-int/svelte-barcode#v3.0.0"
+    "@sunrin-int/svelte-barcode": "https://github.com/sunrin-int/svelte-barcode#v3.0.1"
     "@types/node-rsa": ^1.1.1
     "@types/react": ^18.0.21
     "@types/react-dom": ^18.0.6
