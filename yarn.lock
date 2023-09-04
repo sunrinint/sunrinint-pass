@@ -2001,6 +2001,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sunrin-int/svelte-barcode@https://github.com/sunrin-int/svelte-barcode#v3.0.1":
+  version: 3.0.0
+  resolution: "@sunrin-int/svelte-barcode@https://github.com/sunrin-int/svelte-barcode.git#commit=ab7843f0ba773a43ac89cd7af4a955effcb218ad"
+  dependencies:
+    jsbarcode: ^3.11.5
+  checksum: 05604f19f07f7956636ae26e50f1f62eb77d1aacdc2e8f40e1fb10f93db5858f4fee226a157b8ff3b5fbea860d75ccbdac79ebde439d5e9388899e381a50f8ed
+  languageName: node
+  linkType: hard
+
 "@surma/rollup-plugin-off-main-thread@npm:^2.2.3":
   version: 2.2.3
   resolution: "@surma/rollup-plugin-off-main-thread@npm:2.2.3"
@@ -5405,7 +5414,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsbarcode@npm:^3.11.3":
+"jsbarcode@npm:^3.11.5":
   version: 3.11.5
   resolution: "jsbarcode@npm:3.11.5"
   bin:
@@ -8226,6 +8235,7 @@ __metadata:
     "@astrojs/svelte": ^4.0.0
     "@nanostores/persistent": ^0.9.1
     "@nanostores/react": ^0.7.1
+    "@sunrin-int/svelte-barcode": "https://github.com/sunrin-int/svelte-barcode#v3.0.1"
     "@types/node-rsa": ^1.1.1
     "@types/react": ^18.0.21
     "@types/react-dom": ^18.0.6
@@ -8240,7 +8250,6 @@ __metadata:
     react-dom: ^18.0.0
     sass: ^1.66.1
     svelte: ^4.0.0
-    svelte-barcode: ^2.0.0
     vite-plugin-node-polyfills: ^0.12.0
     workbox-build: ^7.0.0
   languageName: unknown
@@ -8268,15 +8277,6 @@ __metadata:
   version: 1.0.0
   resolution: "supports-preserve-symlinks-flag@npm:1.0.0"
   checksum: 53b1e247e68e05db7b3808b99b892bd36fb096e6fba213a06da7fab22045e97597db425c724f2bbd6c99a3c295e1e73f3e4de78592289f38431049e1277ca0ae
-  languageName: node
-  linkType: hard
-
-"svelte-barcode@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "svelte-barcode@npm:2.0.0"
-  dependencies:
-    jsbarcode: ^3.11.3
-  checksum: 0ee6162e2c11a8fda9d06a6d1be906fd59a7250c10e73e9c732a3f5e97d4f29f3a104d6555b453f0e55747582031ef6b83ddd760c7c2a70c0fd4dcbf59e4ba32
   languageName: node
   linkType: hard
 
