@@ -11,8 +11,9 @@
 
   let cardRef: HTMLDivElement;
   let swiperRef: { swiper: Swiper };
+  let deg = 0;
 
-  let side: "front" | "back" = "front";
+  $: side = deg % 360 === 0 ? "front" : "back";
 
   onMount(async () => {
     register();
@@ -24,21 +25,16 @@
   });
 
   function onSlideChange(e: any) {
-    side = e.detail[0].activeIndex === 0 ? "front" : "back";
-  }
-
-  $: if (cardRef) {
-    if (side === "front") {
-      cardRef.style.transform = "rotateY(0deg)";
-      swiperRef.swiper.slideTo(0);
-    } else {
-      cardRef.style.transform = "rotateY(180deg)";
-      swiperRef.swiper.slideTo(1);
+    if (e.detail[0].activeIndex === 0) {
+      cardRef.style.transform = `rotateY(${(deg -= 180)}deg)`;
+    } else if (e.detail[0].activeIndex === 2) {
+      cardRef.style.transform = `rotateY(${(deg += 180)}deg)`;
     }
+    swiperRef.swiper?.slideTo(1);
   }
 
   const flip = () => {
-    side = side === "front" ? "back" : "front";
+    cardRef.style.transform = `rotateY(${(deg += 180)}deg)`;
   };
 </script>
 
@@ -47,9 +43,11 @@
     class="swiper"
     on:slidechange={onSlideChange}
     speed="0"
+    initial-slide={1}
     follow-finger={false}
     bind:this={swiperRef}
   >
+    <swiper-slide />
     <swiper-slide />
     <swiper-slide />
   </swiper-container>

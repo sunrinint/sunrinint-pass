@@ -19,7 +19,12 @@
   {#if !$isEmpty}
     <p>선린인터넷고등학교 모바일 학생증</p>
     <div class="image">
-      <img src={Preview.src} alt="profile" />
+      <img
+        src={$userInfo.profile ?? Preview.src}
+        alt="profile"
+        referrerpolicy="no-referrer"
+      />
+      <!-- <img src={Preview.src} alt="profile" /> -->
     </div>
     <div class="detail">
       <h1>{$userInfo.name}</h1>

@@ -9,6 +9,7 @@ export type UserInfo = {
   email: string;
   date: string;
   barcode: string;
+  profile?: string;
 };
 
 const DEFAULT_USER_INFO: UserInfo = {
