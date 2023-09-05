@@ -24,18 +24,10 @@
   });
 
   function onSlideChange(e: any) {
-    if (e.detail[0].activeIndex === 0) {
-      side = "front";
-      cardRef.style.transform = "rotateY(0deg)";
-    } else {
-      side = "back";
-      cardRef.style.transform = "rotateY(180deg)";
-    }
+    side = e.detail[0].activeIndex === 0 ? "front" : "back";
   }
 
-  const flip = () => {
-    side = side === "front" ? "back" : "front";
-
+  $: if (cardRef) {
     if (side === "front") {
       cardRef.style.transform = "rotateY(0deg)";
       swiperRef.swiper.slideTo(0);
@@ -43,11 +35,14 @@
       cardRef.style.transform = "rotateY(180deg)";
       swiperRef.swiper.slideTo(1);
     }
+  }
+
+  const flip = () => {
+    side = side === "front" ? "back" : "front";
   };
 </script>
 
 <div class="flip">
-  <div class="shadow" />
   <swiper-container
     class="swiper"
     on:slidechange={onSlideChange}
@@ -59,6 +54,7 @@
     <swiper-slide />
   </swiper-container>
   <div class="card" bind:this={cardRef}>
+    <div class="shadow" />
     <div class="front">
       <Front />
     </div>
@@ -87,15 +83,6 @@
 
   .flip {
     position: relative;
-
-    .shadow {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: rgba(82, 99, 133, 0.24);
-      filter: blur(20px);
-    }
-
     height: 100%;
 
     &-button {
@@ -128,6 +115,15 @@
     transition: 0.4s;
     transform-style: preserve-3d;
     border-radius: 12px;
+
+    .shadow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(82, 99, 133, 0.24);
+      filter: blur(20px);
+    }
+
     .front,
     .back {
       position: absolute;
