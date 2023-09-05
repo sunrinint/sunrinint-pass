@@ -22,7 +22,7 @@
       <img src={Preview.src} alt="profile" />
     </div>
     <div class="detail">
-      <h1>나선린</h1>
+      <h1>{$userInfo.name}</h1>
       <h2>
         <span>생년월일</span>
         <span>2006.01.15</span>
