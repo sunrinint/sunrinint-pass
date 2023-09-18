@@ -39,9 +39,9 @@
     </div>
   </div>
   <div class="buttons">
-    <button on:click={() => logout()}
-      >로그아웃 <img src={Logout.src} alt="logout" /></button
-    >
+    <button on:click={() => logout()}>
+      로그아웃 <img src={Logout.src} alt="logout" />
+    </button>
     <button>사진 수정 <img src={Edit.src} alt="edit" /></button>
   </div>
 </div>
@@ -88,15 +88,17 @@
     }
 
     .buttons {
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: flex-start;
       gap: 8px;
 
       button {
+        flex: 1;
         display: flex;
         padding: 12px 20px;
-        align-items: center;
+        justify-content: center;
         gap: 8px;
         border-radius: 30px;
         background: var(--Grayscale-10, #fff);

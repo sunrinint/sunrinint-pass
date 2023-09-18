@@ -1,0 +1,79 @@
+---
+// format: YYYY년 MM월 DD일
+const BUILD_DATE = `${new Date().getFullYear()}년 ${
+  new Date().getMonth() + 1
+}월 ${new Date().getDate()}일`;
+---
+
+<div class="wrapper">
+  <div class="header">
+    <p>서비스 정보</p>
+  </div>
+  <div class="content">
+    <p class="label">빌드 날짜</p>
+    <div class="item">
+      <p>{BUILD_DATE}</p>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .wrapper {
+    width: 100%;
+    display: flex;
+    padding: 8px;
+    max-width: 480px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: stretch;
+    border-radius: 8px;
+    background: var(--Grayscale-10, #fff);
+  }
+
+  .header {
+    display: flex;
+    padding: 12px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+    align-self: stretch;
+
+    p {
+      flex: 1;
+      color: var(--Grayscale-50, #1c232e);
+      font-size: 17px;
+      font-weight: 600;
+    }
+  }
+
+  .content {
+    display: flex;
+    padding: 12px 8px 12px 12px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 4px;
+
+    .label {
+      color: var(--Grayscale-50, #1c232e);
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 150%; /* 22.5px */
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      p {
+        color: var(--Grayscale-30, #4f5d70);
+        text-align: right;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 150%; /* 22.5px */
+      }
+    }
+  }
+</style>

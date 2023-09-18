@@ -10,6 +10,7 @@ export type UserInfo = {
   date: string;
   barcode: string;
   profile?: string;
+  birth?: string;
 };
 
 const DEFAULT_USER_INFO: UserInfo = {
