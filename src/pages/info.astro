@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 
 import Header from "../components/Header.astro";
 import Content from "../components/info/Content.astro";
+import Footer from "../components/Footer.astro";
 
 const Contents = [
   {
@@ -26,11 +27,6 @@ const Contents = [
       'SunrinINT는 일부 오픈소스로 운영되고 있습니다. <a target="_blank" href="https://github.com/sunrin-int/sunrinint-pass">GitHub</a>에서 PR해주시면 검토 후 반영하도록 하겠습니다.',
   },
 ];
-
-// format: YYYY년 MM월 DD일
-const BUILD_DATE = `${new Date().getFullYear()}년 ${
-  new Date().getMonth() + 1
-}월 ${new Date().getDate()}일`;
 ---
 
 <Layout title="모바일 학생증 서비스">
@@ -43,52 +39,31 @@ const BUILD_DATE = `${new Date().getFullYear()}년 ${
         ))
       }
     </div>
-    <div class="footer">
-      <p>서비스 버전: {BUILD_DATE}</p>
-      <p>&copy; 2023 SunrinINT.</p>
-    </div>
+    <Footer />
   </div>
-
-  <style lang="scss" scoped>
-    body {
-      overflow-y: scroll;
-      background-color: var(--Grayscale-20);
-    }
-
-    .wrapper {
-      width: 100%;
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .content {
-      height: 100%;
-      display: flex;
-      padding: 66px 20px 32px 20px;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .footer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      margin-bottom: 40px;
-
-      p {
-        color: var(--Grayscale-30);
-        text-align: center;
-        font-family: SUIT;
-        font-size: 15px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 150%; /* 22.5px */
-      }
-    }
-  </style>
 </Layout>
+
+<style lang="scss" scoped>
+  body {
+    overflow-y: scroll;
+    background-color: var(--Grayscale-20);
+  }
+
+  .wrapper {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .content {
+    height: 100%;
+    display: flex;
+    padding: 66px 20px 32px 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+</style>
