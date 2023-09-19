@@ -1,6 +1,8 @@
 ---
 import { pwaInfo } from "virtual:pwa-info";
 import "../styles/global.scss";
+import { ViewTransitions } from "astro:transitions";
+import { slide } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -10,7 +12,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" transition:name="root" transition:animate="slide">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -22,6 +24,7 @@ const { title } = Astro.props;
     <meta name="msapplication-TileColor" content="#FFFFFF" />
     <meta name="theme-color" content="#ffffff" />
     <title>{title}</title>
+    <ViewTransitions />
     <script src="/src/pwa.ts"></script>
     {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
   </head>
