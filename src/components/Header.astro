@@ -1,9 +1,19 @@
 ---
 import { Image } from "astro:assets";
 
+interface Props {
+  info?: boolean;
+  settings?: boolean;
+}
+
 import Logo from "../assets/logo.svg";
-import Info from "../assets/info.svg";
-import Settings from "../assets/settings.svg";
+import InfoEmpty from "../assets/info.svg";
+import InfoFill from "../assets/info-fill.svg";
+import SettingsEmpty from "../assets/settings.svg";
+import SettingsFill from "../assets/settings-fill.svg";
+
+const Info = Astro.props.info ? InfoFill : InfoEmpty;
+const Settings = Astro.props.settings ? SettingsFill : SettingsEmpty;
 ---
 
 <div class="header">

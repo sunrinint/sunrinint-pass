@@ -5,6 +5,9 @@ import Header from "../components/Header.astro";
 import Content from "../components/info/Content.astro";
 import Footer from "../components/Footer.astro";
 
+import Github from "../assets/github.svg";
+import Instagram from "../assets/instagram.svg";
+
 const Contents = [
   {
     title: "SunrinINT가 무엇인가요?",
@@ -31,8 +34,24 @@ const Contents = [
 
 <Layout title="모바일 학생증 서비스">
   <div class="wrapper">
-    <Header />
+    <Header info />
     <div class="content">
+      <div class="links">
+        <!-- <a href="https://play.google.com/store/apps/details?id=kr.sunrin.intpass" target="_blank">
+          <img src="/assets/google-play-badge.png" alt="Google Play" />
+        </a>
+        <a href="https://apps.apple.com/kr/app/%EC%84%A0%EB%A6%B0%EC%9D%B8%ED%84%B0%EB%84%B7%EA%B3%A0-%ED%95%99%EC%83%9D%EC%A6%9D/id1560915219" target="_blank">
+          <img src="/assets/app-store-badge.png" alt="App Store" />
+        </a> -->
+        <a href="https://www.instagram.com/sunrin_int/" target="_blank">
+          <img src={Instagram.src} alt="Instagram" />
+           Instagram
+        </a>
+        <a href="https://github.com/sunrin-int/sunrinint-pass" target="_blank">
+          <img src={Github.src} alt="GitHub" />
+           GitHub
+        </a>
+      </div>
       {
         Contents.map((content) => (
           <Content title={content.title} content={content.content} />
@@ -65,5 +84,36 @@ const Contents = [
     flex-direction: column;
     align-items: center;
     gap: 12px;
+
+    .links {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      a {
+        flex: 1;
+        display: flex;
+        height: 44px;
+        padding: 0px 20px;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        color: var(--Grayscale-30, #4f5d70);
+        text-align: center;
+        border-radius: 96px;
+        background: var(--Grayscale-10, #fff);
+
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 24px; /* 160% */
+        text-decoration: none;
+
+        img {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
   }
 </style>
