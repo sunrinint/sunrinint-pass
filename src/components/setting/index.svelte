@@ -49,7 +49,7 @@
 <style lang="scss">
   .wrapper {
     display: flex;
-    padding: 16px 0px;
+    padding: 12px 0px;
     flex-direction: column;
     align-items: center;
     gap: 16px;
@@ -97,11 +97,16 @@
       button {
         flex: 1;
         display: flex;
+        height: 44px;
         padding: 12px 20px;
         justify-content: center;
+        align-items: center;
         gap: 8px;
         border-radius: 30px;
         background: var(--Grayscale-10, #fff);
+
+        font-size: 15px;
+        color: var(--Grayscale-30);
 
         img {
           width: 16px;
