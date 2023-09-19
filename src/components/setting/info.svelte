@@ -10,13 +10,16 @@
   <div class="header">
     <p>내 정보</p>
   </div>
-  <button class="content" on:click={() => (modal = true)}>
+  <!-- <button class="content" on:click={() => (modal = true)}>
+    
+  </button> -->
+  <a href="/settings/birth" class="content">
     <p class="label">생년월일</p>
     <div class="item">
       <p>{$userInfo.birth ?? "설정되지 않음"}</p>
       <img src={RightArrow.src} alt="go" />
     </div>
-  </button>
+  </a>
 </div>
 {#if modal}
   <BirthModal close={() => (modal = false)} />
@@ -64,6 +67,7 @@
     align-items: center;
     align-self: stretch;
     border-radius: 4px;
+    text-decoration: none;
 
     .label {
       color: var(--Grayscale-50, #1c232e);
