@@ -7,6 +7,7 @@ import Footer from "../components/Footer.astro";
 
 import Github from "../assets/github.svg";
 import Instagram from "../assets/instagram.svg";
+import { createSlide } from "../libs/animation";
 
 const Contents = [
   {
@@ -32,7 +33,13 @@ const Contents = [
 ];
 ---
 
-<Layout title="모바일 학생증 서비스">
+<Layout
+  title="모바일 학생증 서비스"
+  animation={createSlide({
+    direction: "Right",
+    oldSlide: false,
+  })}
+>
   <div class="wrapper">
     <Header info />
     <div class="content">

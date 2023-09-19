@@ -7,9 +7,16 @@ import Footer from "../components/Footer.astro";
 import Setting from "../components/setting/index.svelte";
 import Info from "../components/setting/info.svelte";
 import Build from "../components/setting/build.astro";
+import { createSlide } from "../libs/animation";
 ---
 
-<Layout title="모바일 학생증 서비스">
+<Layout
+  title="모바일 학생증 서비스"
+  animation={createSlide({
+    direction: "Left",
+    oldSlide: false,
+  })}
+>
   <div class="wrapper">
     <Header settings />
     <div class="content">
