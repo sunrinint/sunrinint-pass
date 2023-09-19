@@ -10,13 +10,13 @@
   <div class="header">
     <p>내 정보</p>
   </div>
-  <div class="content">
+  <button class="content" on:click={() => (modal = true)}>
     <p class="label">생년월일</p>
-    <button class="item" on:click={() => (modal = true)}>
+    <div class="item">
       <p>{$userInfo.birth ?? "설정되지 않음"}</p>
       <img src={RightArrow.src} alt="go" />
-    </button>
-  </div>
+    </div>
+  </button>
 </div>
 {#if modal}
   <BirthModal close={() => (modal = false)} />
