@@ -1,6 +1,9 @@
 <script lang="ts">
   import RightArrow from "../../assets/right_arrow.svg";
   import { userInfo } from "../../stores/info";
+  import BirthModal from "./birth-modal.svelte";
+
+  let modal = false;
 </script>
 
 <div class="wrapper">
@@ -9,12 +12,15 @@
   </div>
   <div class="content">
     <p class="label">생년월일</p>
-    <div class="item">
+    <button class="item" on:click={() => (modal = true)}>
       <p>{$userInfo.birth ?? "설정되지 않음"}</p>
       <img src={RightArrow.src} alt="go" />
-    </div>
+    </button>
   </div>
 </div>
+{#if modal}
+  <BirthModal close={() => (modal = false)} />
+{/if}
 
 <style lang="scss">
   .wrapper {
