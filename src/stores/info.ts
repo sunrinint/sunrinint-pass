@@ -38,8 +38,12 @@ export const isEmpty = computed([encryptedUserInfo], () => {
 });
 
 function decrypt(encrypted: string) {
-  const module = new NodeRSA(publicKey);
-  return module.decryptPublic(encrypted, "utf8");
+  try {
+    const module = new NodeRSA(publicKey);
+    return module.decryptPublic(encrypted, "utf8");
+  } catch (e) {
+    return "";
+  }
 }
 
 export const resetUserInfo = () => {
