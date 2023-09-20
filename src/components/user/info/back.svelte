@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import Preview from "../../../assets/images/Preview.png";
   import Seal from "../../../assets/seal.svg";
+  import Background from "../../../assets/images/pass_backside.svg";
   import { userInfo, isEmpty, encryptedUserInfo } from "../../../stores/info";
   import Loading from "../../Loading.svelte";
   import Pass from "../../../api/Pass";
@@ -17,6 +18,8 @@
 
 <div class="info info-back">
   {#if !$isEmpty}
+    <img id="bg_l" src={Background.src} alt="background_left" />
+    <img id="bg_r" src={Background.src} alt="background_right" />
     <p>선린인터넷고등학교 모바일 학생증</p>
     <div class="image">
       <img
@@ -69,6 +72,25 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
+
+    overflow: hidden;
+
+    #bg_l {
+      width: 308px;
+      height: 376px;
+      position: absolute;
+      left: -231px;
+      opacity: 0.1;
+    }
+
+    #bg_r {
+      width: 308px;
+      height: 376px;
+      position: absolute;
+      right: -232px;
+      bottom: 12px;
+      opacity: 0.1;
+    }
 
     p {
       font-weight: 400;
