@@ -29,7 +29,6 @@ export const encryptedUserInfo = persistentAtom<string>(
 export const userInfo = computed([encryptedUserInfo], (encrypted): UserInfo => {
   if (encrypted === "") return DEFAULT_USER_INFO;
   const decrypted = decrypt(encrypted);
-  console.log(decrypted);
   if (!decrypted) return DEFAULT_USER_INFO;
   return JSON.parse(decrypted);
 });

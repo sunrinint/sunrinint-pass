@@ -30,7 +30,7 @@
       <h1>{$userInfo.name}</h1>
       <h2>
         <span>생년월일</span>
-        <span>2006.01.15</span>
+        <span>{$userInfo.birth?.replace(/\-/g, ".") ?? "설정되지 않음"}</span>
       </h2>
     </div>
     <div class="sign">
@@ -76,6 +76,15 @@
       color: var(--Grayscale-30);
       font-size: 15px;
       z-index: 1;
+    }
+
+    .image {
+      max-height: 160px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
 
     .detail {

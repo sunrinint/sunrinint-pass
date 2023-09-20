@@ -11,6 +11,9 @@
   } from "../../stores/info";
   import User from "../../api/User";
   import Pass from "../../api/Pass";
+  import File from "../../api/File";
+
+  let uploadRef: HTMLInputElement;
 
   onMount(async () => {
     if (isEmpty.get()) {
@@ -18,11 +21,36 @@
         encryptedUserInfo.set(data);
       });
     }
+
+    uploadRef.addEventListener("change", (event) => {
+      const target = event.target as HTMLInputElement;
+      const file = target.files?.[0];
+
+      if (file) {
+        console.log(file);
+        File.Upload(file).then(({ location }) => {
+          User.UpdateMe({ profileImage: location }).then(() => {
+            Pass.GetEncrypted().then((data) => {
+              encryptedUserInfo.set(data);
+            });
+          });
+        });
+        // User.UpdateMe({ profile: file }).then(() => {
+        //   Pass.GetEncrypted().then((data) => {
+        //     encryptedUserInfo.set(data);
+        //   });
+        // });
+      }
+    });
   });
 
   function logout() {
     resetUserInfo();
     User.Logout().then(() => (location.href = "/login"));
+  }
+
+  function upload() {
+    uploadRef.click();
   }
 </script>
 
@@ -42,11 +70,18 @@
     <button on:click={() => logout()}>
       로그아웃 <img src={Logout.src} alt="logout" />
     </button>
-    <button>사진 수정 <img src={Edit.src} alt="edit" /></button>
+    <button on:click={() => upload()}>
+      사진 수정 <img src={Edit.src} alt="edit" />
+    </button>
   </div>
 </div>
+<input id="upload" type="file" accept="image/*" bind:this={uploadRef} />
 
 <style lang="scss">
+  #upload {
+    display: none;
+  }
+
   .wrapper {
     display: flex;
     padding: 12px 0px;
@@ -61,6 +96,10 @@
       align-items: center;
       gap: 24px;
       align-self: stretch;
+
+      img {
+        max-height: 160px;
+      }
 
       .detail {
         display: flex;

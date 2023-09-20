@@ -1,8 +1,9 @@
 <script lang="ts">
   import ArrowBack from "../../assets/arrow_back.svg";
   import { onMount } from "svelte";
-  import { UpdateMe } from "../../api/User/me";
-  import { userInfo } from "../../stores/info";
+  import User from "../../api/User";
+  import { encryptedUserInfo, userInfo } from "../../stores/info";
+  import Pass from "../../api/Pass";
 
   const PLACEHOLDER_COLOR = "var(--Grayscale-25, #9098A3)";
 
@@ -24,7 +25,11 @@
     setColor(event);
     const birth = getBirth();
     if (birth) {
-      UpdateMe({ birthday: birth });
+      User.UpdateMe({ birthday: birth }).then(() => {
+        Pass.GetEncrypted().then((data) => {
+          encryptedUserInfo.set(data);
+        });
+      });
     }
   }
 
