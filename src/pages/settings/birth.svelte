@@ -1,13 +1,32 @@
 <script lang="ts">
-  import { slide } from "svelte/transition";
   import ArrowBack from "../../assets/arrow_back.svg";
   import { onMount } from "svelte";
+  import { UpdateMe } from "../../api/User/me";
+  import { userInfo } from "../../stores/info";
 
   const PLACEHOLDER_COLOR = "var(--Grayscale-25, #9098A3)";
 
   let yearRef: HTMLSelectElement;
   let monthRef: HTMLSelectElement;
   let dayRef: HTMLSelectElement;
+
+  $: _year = $userInfo.birth?.split("-")[0]
+    ? parseInt($userInfo.birth?.split("-")[0])
+    : undefined;
+  $: _month = $userInfo.birth?.split("-")[1]
+    ? parseInt($userInfo.birth?.split("-")[1])
+    : undefined;
+  $: _day = $userInfo.birth?.split("-")[2]
+    ? parseInt($userInfo.birth?.split("-")[2])
+    : undefined;
+
+  function onChange(event: Event) {
+    setColor(event);
+    const birth = getBirth();
+    if (birth) {
+      UpdateMe({ birthday: birth });
+    }
+  }
 
   function setColor(event: Event) {
     const target = event.target as HTMLSelectElement;
@@ -19,10 +38,24 @@
     }
   }
 
+  function getBirth() {
+    const year = yearRef.value.trim();
+    const month = monthRef.value.trim();
+    const day = dayRef.value.trim();
+
+    if (year === "년" || month === "월" || day === "일") {
+      return;
+    }
+
+    return `${year}-${month}-${day}`;
+  }
+
   onMount(() => {
-    yearRef.style.color = PLACEHOLDER_COLOR;
-    monthRef.style.color = PLACEHOLDER_COLOR;
-    dayRef.style.color = PLACEHOLDER_COLOR;
+    if (!$userInfo.birth) {
+      yearRef.style.color = PLACEHOLDER_COLOR;
+      monthRef.style.color = PLACEHOLDER_COLOR;
+      dayRef.style.color = PLACEHOLDER_COLOR;
+    }
   });
 </script>
 
@@ -36,22 +69,27 @@
   <div class="container">
     <div class="content">
       <div class="date-picker">
-        <select name="year" id="year" bind:this={yearRef} on:change={setColor}>
-          <option disabled selected> 년 </option>
+        <select name="year" id="year" bind:this={yearRef} on:change={onChange}>
+          <option disabled selected={!$userInfo.birth}> 년 </option>
           {#each Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i) as year}
-            <option value={year}>{year}</option>
+            <option value={year} selected={year === _year}>{year}</option>
           {/each}
         </select>
-        <select name="month" id="month" bind:this={monthRef}>
-          <option disabled selected> 월 </option>
+        <select
+          name="month"
+          id="month"
+          bind:this={monthRef}
+          on:change={onChange}
+        >
+          <option disabled selected={!$userInfo.birth}> 월 </option>
           {#each Array.from({ length: 12 }, (_, i) => i + 1) as month}
-            <option value={month}>{month}</option>
+            <option value={month} selected={month === _month}>{month}</option>
           {/each}
         </select>
-        <select name="day" id="day" bind:this={dayRef}>
-          <option disabled selected> 일 </option>
+        <select name="day" id="day" bind:this={dayRef} on:change={onChange}>
+          <option disabled selected={!$userInfo.birth}> 일 </option>
           {#each Array.from({ length: 31 }, (_, i) => i + 1) as day}
-            <option value={day}>{day}</option>
+            <option value={day} selected={day === _day}>{day}</option>
           {/each}
         </select>
       </div>

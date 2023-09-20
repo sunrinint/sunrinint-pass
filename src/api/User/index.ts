@@ -1,4 +1,4 @@
-import { GetMe } from "./getme";
+import { GetMe } from "./me";
 import { Logout } from "./logout";
 
 export default {
