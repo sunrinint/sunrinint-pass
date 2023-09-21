@@ -12,8 +12,18 @@
   import User from "../../api/User";
   import Pass from "../../api/Pass";
   import File from "../../api/File";
+  import { fade } from "svelte/transition";
 
   let uploadRef: HTMLInputElement;
+  let error: string | undefined;
+  let timer: NodeJS.Timeout;
+
+  function clearError() {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      error = undefined;
+    }, 3000);
+  }
 
   onMount(async () => {
     if (isEmpty.get()) {
@@ -21,28 +31,35 @@
         encryptedUserInfo.set(data);
       });
     }
+  });
 
-    uploadRef.addEventListener("change", (event) => {
-      const target = event.target as HTMLInputElement;
-      const file = target.files?.[0];
+  function fileChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const file = target.files?.[0];
 
-      if (file) {
-        console.log(file);
-        File.Upload(file).then(({ location }) => {
+    if (file) {
+      console.log(file);
+      File.Upload(file)
+        .then(({ location }) => {
           User.UpdateMe({ profileImage: location }).then(() => {
             Pass.GetEncrypted().then((data) => {
               encryptedUserInfo.set(data);
             });
           });
+        })
+        .catch((err) => {
+          switch (err.response.status) {
+            case 413:
+              error = "파일의 크기가 너무 큽니다.";
+              break;
+
+            default:
+              break;
+          }
+          clearError();
         });
-        // User.UpdateMe({ profile: file }).then(() => {
-        //   Pass.GetEncrypted().then((data) => {
-        //     encryptedUserInfo.set(data);
-        //   });
-        // });
-      }
-    });
-  });
+    }
+  }
 
   function logout() {
     resetUserInfo();
@@ -87,8 +104,17 @@
       사진 수정 <img src={Edit.src} alt="edit" />
     </button>
   </div>
+  {#if error}
+    <p class="error" transition:fade>{error}</p>
+  {/if}
 </div>
-<input id="upload" type="file" accept="image/*" bind:this={uploadRef} />
+<input
+  id="upload"
+  type="file"
+  accept="image/*"
+  bind:this={uploadRef}
+  on:change={fileChange}
+/>
 
 <style lang="scss">
   #upload {
@@ -185,6 +211,13 @@
           height: 16px;
         }
       }
+    }
+
+    .error {
+      color: #ff0000;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 150%; /* 22.5px */
     }
   }
 </style>
