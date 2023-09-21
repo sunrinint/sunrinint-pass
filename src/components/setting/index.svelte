@@ -13,6 +13,7 @@
   import Pass from "../../api/Pass";
   import File from "../../api/File";
   import { fade } from "svelte/transition";
+  import Alert from "./alert.svelte";
 
   let uploadRef: HTMLInputElement;
   let error: string | undefined;
@@ -115,6 +116,7 @@
   bind:this={uploadRef}
   on:change={fileChange}
 />
+<Alert close={() => {}} />
 
 <style lang="scss">
   #upload {
