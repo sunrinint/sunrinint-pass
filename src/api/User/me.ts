@@ -9,7 +9,7 @@ interface MeBody {
   department: string;
   class: number;
   number: number;
-  profileImage?: string;
+  profileImage?: string | null;
   birthday?: string;
 }
 

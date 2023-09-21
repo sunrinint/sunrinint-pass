@@ -52,15 +52,28 @@
   function upload() {
     uploadRef.click();
   }
+
+  function remove() {
+    User.UpdateMe({ profileImage: null }).then(() => {
+      Pass.GetEncrypted().then((data) => {
+        encryptedUserInfo.set(data);
+      });
+    });
+  }
 </script>
 
 <div class="wrapper">
   <div class="user">
-    <img
-      src={$userInfo.profile ?? Preview.src}
-      alt="Profile"
-      referrerpolicy="no-referrer"
-    />
+    <div class="profile">
+      <img
+        src={$userInfo.profile ?? Preview.src}
+        alt="Profile"
+        referrerpolicy="no-referrer"
+      />
+      {#if $userInfo.profile}
+        <button on:click={() => remove()}> x </button>
+      {/if}
+    </div>
     <div class="detail">
       <h2>{$userInfo.name}</h2>
       <p>{$userInfo.email}</p>
@@ -97,8 +110,28 @@
       gap: 24px;
       align-self: stretch;
 
-      img {
-        max-height: 160px;
+      .profile {
+        position: relative;
+        img {
+          max-height: 160px;
+        }
+
+        button {
+          position: absolute;
+          top: 0;
+          right: 0;
+
+          transform: rotate(180deg);
+
+          visibility: hidden;
+        }
+
+        &:hover {
+          button {
+            visibility: visible;
+            color: var(--Grayscale-25);
+          }
+        }
       }
 
       .detail {
