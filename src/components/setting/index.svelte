@@ -137,6 +137,8 @@
       .profile {
         position: relative;
         img {
+          aspect-ratio: 5/6;
+          object-fit: cover;
           max-height: 160px;
         }
 

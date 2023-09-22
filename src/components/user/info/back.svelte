@@ -104,6 +104,8 @@
       max-height: 160px;
 
       img {
+        aspect-ratio: 5/6;
+        object-fit: cover;
         width: 100%;
         height: 100%;
       }
