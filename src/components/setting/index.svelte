@@ -102,9 +102,6 @@
       사진 수정 <img src={Edit.src} alt="edit" />
     </button>
   </div>
-  {#if error}
-    <Alert close={() => (error = undefined)} {...error} />
-  {/if}
 </div>
 <input
   id="upload"
@@ -113,6 +110,9 @@
   bind:this={uploadRef}
   on:change={fileChange}
 />
+{#if error}
+  <Alert close={() => (error = undefined)} {...error} />
+{/if}
 
 <style lang="scss">
   #upload {
@@ -211,13 +211,6 @@
           height: 16px;
         }
       }
-    }
-
-    .error {
-      color: #ff0000;
-      font-size: 15px;
-      font-weight: 400;
-      line-height: 150%; /* 22.5px */
     }
   }
 </style>
