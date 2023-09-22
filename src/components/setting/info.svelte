@@ -67,7 +67,6 @@
     align-items: center;
     align-self: stretch;
     border-radius: 4px;
-    text-decoration: none;
 
     .label {
       color: var(--Grayscale-50, #1c232e);
