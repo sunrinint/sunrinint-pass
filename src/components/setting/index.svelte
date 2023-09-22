@@ -16,15 +16,7 @@
   import Alert from "./alert.svelte";
 
   let uploadRef: HTMLInputElement;
-  let error: string | undefined;
-  let timer: NodeJS.Timeout;
-
-  function clearError() {
-    if (timer) clearTimeout(timer);
-    timer = setTimeout(() => {
-      error = undefined;
-    }, 3000);
-  }
+  let error: { title: string; content: string[] } | undefined;
 
   onMount(async () => {
     if (isEmpty.get()) {
@@ -51,13 +43,18 @@
         .catch((err) => {
           switch (err.response.status) {
             case 413:
-              error = "파일의 크기가 너무 큽니다.";
+              error = {
+                title: "이미지가 너무 큽니다",
+                content: [
+                  "1MB 이하 크기의 사진으로 다시 시도해보세요.",
+                  "권장되는 규격은 512 x 640입니다.",
+                ],
+              };
               break;
 
             default:
               break;
           }
-          clearError();
         });
     }
   }
@@ -106,7 +103,7 @@
     </button>
   </div>
   {#if error}
-    <p class="error" transition:fade>{error}</p>
+    <Alert close={() => (error = undefined)} {...error} />
   {/if}
 </div>
 <input
@@ -116,7 +113,6 @@
   bind:this={uploadRef}
   on:change={fileChange}
 />
-<Alert close={() => {}} />
 
 <style lang="scss">
   #upload {

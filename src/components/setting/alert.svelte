@@ -1,12 +1,16 @@
 <script lang="ts">
+  export let title: string;
+  export let content: string[];
   export let close: () => void;
 </script>
 
 <div class="wrapper">
   <div class="modal">
-    <h1 class="header">이미지가 너무 큽니다</h1>
+    <h1 class="header">{title}</h1>
     <div class="content">
-      <p>테스트</p>
+      {#each content as item}
+        <p>{item}</p>
+      {/each}
     </div>
     <button class="close" on:click={() => close()}> 시도해볼게요! </button>
   </div>
