@@ -1,11 +1,17 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
-  import Background from "../../assets/images/pass_background.svg";
-  import { userInfo, isEmpty, encryptedUserInfo } from "../../stores/info";
-  import Loading from "../Loading.svelte";
-  import Pass from "../../api/Pass";
-  import { DepartmentNames } from "../../constants/departments";
-  import Barcode from "./Barcode.svelte";
+  import Background from "../../../assets/images/pass_background.svg";
+  import { userInfo, isEmpty, encryptedUserInfo } from "../../../stores/info";
+  import Loading from "../../Loading.svelte";
+  import Pass from "../../../api/Pass";
+  import { DepartmentNames } from "../../../constants/departments";
+  import Barcode from "../Barcode.svelte";
+
+  function isDepartmentName(
+    name: string
+  ): name is keyof typeof DepartmentNames {
+    return name in DepartmentNames;
+  }
 
   onMount(async () => {
     if (isEmpty.get()) {
@@ -16,27 +22,28 @@
   });
 </script>
 
-<div class="wrapper">
-  <div class="info">
+<div class="info">
+  {#if !$isEmpty}
+    <p>선린인터넷고등학교 모바일 학생증</p>
+    <div class="detail">
+      <h1>{$userInfo.name ?? ""}&nbsp;</h1>
+      <h2>
+        {isDepartmentName($userInfo.division)
+          ? DepartmentNames[$userInfo.division]
+          : ""}&nbsp;
+      </h2>
+      <p>{$userInfo.email ?? ""}&nbsp;</p>
+    </div>
+
+    <p>{$userInfo.date ?? ""}&nbsp;</p>
     <img src={Background.src} alt="pass" width={200} height={242} />
-
-    {#if !$isEmpty}
-      <p>선린인터넷고등학교 모바일 학생증</p>
-      <div class="detail">
-        <h1>{$userInfo.name ?? ""}&nbsp;</h1>
-        <h2>{DepartmentNames[$userInfo.division] ?? ""}&nbsp;</h2>
-        <p>{$userInfo.email ?? ""}&nbsp;</p>
-      </div>
-
-      <p>{$userInfo.date ?? ""}&nbsp;</p>
-    {:else}
-      <div class="loading">
-        <Loading />
-      </div>
-    {/if}
-  </div>
-  <Barcode />
+  {:else}
+    <div class="loading">
+      <Loading />
+    </div>
+  {/if}
 </div>
+<Barcode />
 
 <style lang="scss">
   .loading {
@@ -48,7 +55,7 @@
   }
 
   .info {
-    background: var(--Grayscale-50);
+    background: #1c232e;
     border-radius: 12px 12px 0 0;
     padding: 20px;
     height: 100%;
@@ -59,6 +66,7 @@
     flex-direction: column;
     justify-content: space-between;
     position: relative;
+    z-index: 0;
 
     img {
       position: absolute;
@@ -74,7 +82,7 @@
     }
 
     h1 {
-      color: var(--Grayscale-10);
+      color: #fff;
       font-size: 33px;
       font-weight: 600;
       line-height: 150%;
@@ -82,7 +90,7 @@
     }
 
     h2 {
-      color: var(--Blue-ish);
+      color: #d7e4f5;
       font-size: 17px;
       font-weight: 600;
       line-height: 150%;

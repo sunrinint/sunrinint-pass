@@ -9,6 +9,8 @@ export type UserInfo = {
   email: string;
   date: string;
   barcode: string;
+  profile?: string;
+  birth?: string;
 };
 
 const DEFAULT_USER_INFO: UserInfo = {
@@ -36,8 +38,12 @@ export const isEmpty = computed([encryptedUserInfo], () => {
 });
 
 function decrypt(encrypted: string) {
-  const module = new NodeRSA(publicKey);
-  return module.decryptPublic(encrypted, "utf8");
+  try {
+    const module = new NodeRSA(publicKey);
+    return module.decryptPublic(encrypted, "utf8");
+  } catch (e) {
+    return "";
+  }
 }
 
 export const resetUserInfo = () => {

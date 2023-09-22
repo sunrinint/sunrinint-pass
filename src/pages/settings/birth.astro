@@ -1,0 +1,15 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { createSlide } from "../../libs/animation";
+import Content from "./birth.svelte";
+---
+
+<Layout
+  title="모바일 학생증 서비스"
+  animation={createSlide({
+    direction: "Left",
+    oldSlide: false,
+  })}
+>
+  <Content client:load />
+</Layout>

@@ -8250,6 +8250,7 @@ __metadata:
     react-dom: ^18.0.0
     sass: ^1.66.1
     svelte: ^4.0.0
+    swiper: ^10.2.0
     vite-plugin-node-polyfills: ^0.12.0
     workbox-build: ^7.0.0
   languageName: unknown
@@ -8320,6 +8321,13 @@ __metadata:
     magic-string: ^0.30.0
     periscopic: ^3.1.0
   checksum: 2555f222c210a751fff85596adc5a1f0e1ebe7e0499ec7c35b5e8111200271ba0cd0cedeef637dc66f43f4866ad17240f89187bfbaf2ca8fff9a522fc7c4369f
+  languageName: node
+  linkType: hard
+
+"swiper@npm:^10.2.0":
+  version: 10.2.0
+  resolution: "swiper@npm:10.2.0"
+  checksum: b81fe81c72b92d0c7d0ba0eb1ea96a7e29de6b67d059fc9d01a0c5285dcadd66f25d258f32c05f87bf54663cf8b09d26b38be5029c064c4822768782772cc025
   languageName: node
   linkType: hard
 

@@ -3,6 +3,7 @@
 :root {
   --Grayscale-10: #ffffff;
   --Grayscale-20: #F0F2F5;
+  --Grayscale-25: #9098A3;
   --Grayscale-30: #4F5D70;
   --Grayscale-40: #222B38;
   --Grayscale-50: #1C232E;
@@ -15,6 +16,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
 
   font-family: 'SUIT', sans-serif;
 }
@@ -40,9 +42,13 @@ button, input {
 
 a {
   color: var(--Highlight);
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 svg {
   height: 48px;
+}
+
+select {
+  border: none;
 }

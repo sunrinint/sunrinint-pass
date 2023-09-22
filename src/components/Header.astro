@@ -1,37 +1,44 @@
 ---
 import { Image } from "astro:assets";
 
+interface Props {
+  info?: boolean;
+  settings?: boolean;
+}
+
 import Logo from "../assets/logo.svg";
-import Info from "../assets/info.svg";
+import InfoEmpty from "../assets/info.svg";
+import InfoFill from "../assets/info-fill.svg";
+import SettingsEmpty from "../assets/settings.svg";
+import SettingsFill from "../assets/settings-fill.svg";
+
+const Info = Astro.props.info ? InfoFill : InfoEmpty;
+const Settings = Astro.props.settings ? SettingsFill : SettingsEmpty;
 ---
 
-<div class="header">
-  <Image id="logo" src={Logo} alt="landing" width={64} height={24} />
-  <Image id="info" src={Info} alt="info" width={16} height={16} />
+<div class="header" transition:name="header" transition:animate="fade">
+  <a href="/info">
+    <Image src={Info} alt="info" width={24} height={24} />
+  </a>
+  <a href="/">
+    <Image src={Logo} alt="landing" width={54} height={20} />
+  </a>
+  <a href="/settings">
+    <Image src={Settings} alt="settings" width={24} height={24} /></a
+  >
 </div>
-<script>
-  const info = document.getElementById("info");
-  const logo = document.getElementById("logo");
-
-  info?.addEventListener("click", () => {
-    window.location.href = "/info";
-  });
-
-  logo?.addEventListener("click", () => {
-    if (window.location.pathname === "/") return;
-    window.location.href = "/";
-  });
-</script>
-<style scoped>
+<style lang="scss">
   .header {
+    z-index: 999;
     width: 100%;
-    padding: 16px 0;
+    height: 56px;
+    padding: 16px;
 
     position: fixed;
     top: 0;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row;
     gap: 8px;
