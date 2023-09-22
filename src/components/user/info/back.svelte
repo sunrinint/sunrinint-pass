@@ -37,7 +37,7 @@
       </h2>
     </div>
     <div class="sign">
-      <img src={Seal.src} alt="seal" />
+      <!-- <img src={Seal.src} alt="seal" /> -->
       <div class="text">
         <p>위 사람은 본교 학생임을 증명함.</p>
         <p>{$userInfo.date ?? ""}&nbsp;</p>
