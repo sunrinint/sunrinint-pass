@@ -108,6 +108,8 @@
         object-fit: cover;
         width: 100%;
         height: 100%;
+        border-radius: 4px;
+        border: 1px solid var(--Grayscale-20);
       }
     }
 

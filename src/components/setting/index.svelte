@@ -140,6 +140,7 @@
           aspect-ratio: 5/6;
           object-fit: cover;
           max-height: 160px;
+          border-radius: 4px;
         }
 
         button {
